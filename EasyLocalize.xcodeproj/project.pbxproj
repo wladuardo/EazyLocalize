@@ -60,6 +60,7 @@
 		8635F0D12AA5246200418EA0 = {
 			isa = PBXGroup;
 			children = (
+				869CEE422AB2545A00C84FE7 /* Networking */,
 				8635F0DC2AA5246200418EA0 /* EasyLocalize */,
 				8635F0DB2AA5246200418EA0 /* Products */,
 				869CEE372AB2538100C84FE7 /* Frameworks */,
@@ -78,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				869CEE452AB2558E00C84FE7 /* Models */,
-				869CEE402AB2542900C84FE7 /* Packages */,
 				869CEE2D2AB24EBF00C84FE7 /* Services */,
 				869CEE282AB24E6B00C84FE7 /* Constants */,
 				869CEE272AB24E5E00C84FE7 /* Core */,
@@ -138,14 +138,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		869CEE402AB2542900C84FE7 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				869CEE422AB2545A00C84FE7 /* Networking */,
-			);
-			path = Packages;
 			sourceTree = "<group>";
 		};
 		869CEE452AB2558E00C84FE7 /* Models */ = {

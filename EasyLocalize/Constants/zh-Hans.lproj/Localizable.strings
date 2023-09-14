@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  EasyLocalize
+
+  Created by Владислав Ковальский on 14.09.2023.
+  
+*/
+
+"addTranslation" = "添加翻译";
+"choosePath" = "选择您的XCode项目的路径";

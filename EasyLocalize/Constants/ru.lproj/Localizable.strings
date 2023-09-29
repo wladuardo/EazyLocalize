@@ -7,4 +7,10 @@
 */
 
 "addTranslation" = "Добавить перевод";
-"choosePath" = "Выберите путь к вашему XCode-проекту";
+"choosePath" = "Выберите путь к вашему Xcode-проекту";
+"choose" = "выбрать";
+
+"enterYourKey" = "Введите ключ здесь (без кавычек)";
+"enterTextToTranslate" = "Введите фразу, которую нужно перевести";
+
+"chooseAnotherPath" = "Выберите другой путь";

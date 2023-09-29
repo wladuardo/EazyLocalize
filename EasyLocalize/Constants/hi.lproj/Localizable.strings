@@ -7,4 +7,10 @@
 */
 
 "addTranslation" = "अनुवाद जोड़ें";
-"choosePath" = "अपने XCode प्रोजेक्ट का पथ चुनें";
+"choosePath" = "अपने Xcode प्रोजेक्ट का पथ चुनें";
+"choose" = "चुनें";
+
+"enterYourKey" = "यहां कुंजी दर्ज करें (बिना कवोटेशन के)";
+"enterTextToTranslate" = "अनुवाद करने के लिए शब्द दर्ज करें";
+
+"chooseAnotherPath" = "एक दूसरा मार्ग चुनें";

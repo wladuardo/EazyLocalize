@@ -7,4 +7,10 @@
 */
 
 "addTranslation" = "添加翻译";
-"choosePath" = "选择您的XCode项目的路径";
+"choosePath" = "选择您的Xcode项目的路径";
+"choose" = "选择";
+
+"enterYourKey" = "在此输入密钥（不用引号）";
+"enterTextToTranslate" = "输入要翻译的短语";
+
+"chooseAnotherPath" = "选择另一条路";

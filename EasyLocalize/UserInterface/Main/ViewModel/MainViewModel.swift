@@ -8,23 +8,26 @@
 import Foundation
 import AppKit
 
-class MainViewModel: ObservableObject {
+final class MainViewModel: ObservableObject {
     @Published var fileNames: [String] = []
     @Published var translatesDictionary: [String: String] = [:]
+    @Published var isTranslatingInProgress: Bool = false
+    @Published var saveSignal: Bool = true
+    @Published var isSaved: Bool = false
     
     private var localizableStringPaths: [URL] = []
     private let networkingService: NetworkingService = .shared
     
     func selectProjectPath() -> URL? {
         let dialog = NSOpenPanel()
-        dialog.title = "Выберите Xcode проект"
+        dialog.title = String.choosePath
         dialog.canChooseFiles = false
         dialog.canChooseDirectories = true
         dialog.allowsMultipleSelection = false
         
         guard dialog.runModal() == NSApplication.ModalResponse.OK else { return nil }
         guard let url = dialog.url else { return nil }
-        localizableStringPaths = localizableStringsPaths(in: url)
+        localizableStringPaths = getLocalizableStringsPaths(in: url)
         getFileNames()
         return dialog.url
     }
@@ -54,16 +57,35 @@ class MainViewModel: ObservableObject {
     func translateText(_ textToTranslate: String) {
         Task {
             guard !textToTranslate.isEmpty
-                && textToTranslate.count > 1 else { return }
+                    && textToTranslate.count > 1 else { return }
             let languageNames = fileNames.map { $0.replacingOccurrences(of: ".lproj", with: "") }
+            await MainActor.run { isTranslatingInProgress = true }
             let translates = try await networkingService.sendRequest(with: textToTranslate, targetLanguages: languageNames)
             await MainActor.run {
+                isTranslatingInProgress = false
                 translatesDictionary = translates
             }
         }
     }
     
-    private func localizableStringsPaths(in projectPath: URL) -> [URL] {
+    func giveSignalToSave() {
+        Task {
+            await MainActor.run {
+                saveSignal = true
+                isSaved = true
+            }
+        }
+    }
+    
+    func getFullLanguageName(from localizedFileName: String) -> String {
+        let languageCode = localizedFileName.components(separatedBy: ".").first ?? "en"
+        let locale = Locale(identifier: languageCode)
+        return locale.localizedString(forIdentifier: languageCode) ?? ""
+    }
+}
+
+private extension MainViewModel {
+    func getLocalizableStringsPaths(in projectPath: URL) -> [URL] {
         let fileManager = FileManager.default
         let enumerator = fileManager.enumerator(at: projectPath, includingPropertiesForKeys: nil)
         var localizableStringsPaths: [URL] = []
@@ -77,7 +99,7 @@ class MainViewModel: ObservableObject {
         return localizableStringsPaths
     }
     
-    private func getFileNames() {
+    func getFileNames() {
         guard !localizableStringPaths.isEmpty else { return }
         localizableStringPaths.forEach({ url in
             if let decodedURLString = url.absoluteString.removingPercentEncoding {

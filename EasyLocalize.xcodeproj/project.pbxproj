@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8609E2DE2AB327E800509EEE /* TranslateBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8609E2DD2AB327E800509EEE /* TranslateBlock.swift */; };
 		8635F0DE2AA5246200418EA0 /* EasyLocalizeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8635F0DD2AA5246200418EA0 /* EasyLocalizeApp.swift */; };
 		8635F0E02AA5246200418EA0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8635F0DF2AA5246200418EA0 /* MainView.swift */; };
 		8635F0E22AA5246300418EA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8635F0E12AA5246300418EA0 /* Assets.xcassets */; };
@@ -18,9 +19,13 @@
 		869CEE2C2AB24EBA00C84FE7 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869CEE2B2AB24EBA00C84FE7 /* NetworkingService.swift */; };
 		869CEE442AB254C500C84FE7 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 869CEE432AB254C500C84FE7 /* Networking */; };
 		869CEE472AB2559C00C84FE7 /* SendMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869CEE462AB2559C00C84FE7 /* SendMessageModel.swift */; };
+		86C0A65A2AB4464700F91FCC /* MainLocalizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0A6592AB4464700F91FCC /* MainLocalizeView.swift */; };
+		86C0A65C2AB4477C00F91FCC /* ChoosePathBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0A65B2AB4477C00F91FCC /* ChoosePathBlock.swift */; };
+		86C0A65E2AB4479100F91FCC /* TextWithLeadingAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0A65D2AB4479100F91FCC /* TextWithLeadingAlignment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8609E2DD2AB327E800509EEE /* TranslateBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateBlock.swift; sourceTree = "<group>"; };
 		8635F0DA2AA5246200418EA0 /* EasyLocalize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLocalize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8635F0DD2AA5246200418EA0 /* EasyLocalizeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyLocalizeApp.swift; sourceTree = "<group>"; };
 		8635F0DF2AA5246200418EA0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -43,6 +48,9 @@
 		869CEE2B2AB24EBA00C84FE7 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		869CEE422AB2545A00C84FE7 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
 		869CEE462AB2559C00C84FE7 /* SendMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageModel.swift; sourceTree = "<group>"; };
+		86C0A6592AB4464700F91FCC /* MainLocalizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLocalizeView.swift; sourceTree = "<group>"; };
+		86C0A65B2AB4477C00F91FCC /* ChoosePathBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePathBlock.swift; sourceTree = "<group>"; };
+		86C0A65D2AB4479100F91FCC /* TextWithLeadingAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWithLeadingAlignment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +65,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8609E2D92AB3278A00509EEE /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				8635F0EC2AA5254300418EA0 /* Main */,
+			);
+			path = UserInterface;
+			sourceTree = "<group>";
+		};
+		8609E2DA2AB327C700509EEE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8635F0ED2AA5256A00418EA0 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8609E2DB2AB327CC00509EEE /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				8635F0DF2AA5246200418EA0 /* MainView.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		8609E2DC2AB327E100509EEE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8609E2DD2AB327E800509EEE /* TranslateBlock.swift */,
+				86C0A6592AB4464700F91FCC /* MainLocalizeView.swift */,
+				86C0A65B2AB4477C00F91FCC /* ChoosePathBlock.swift */,
+				86C0A65D2AB4479100F91FCC /* TextWithLeadingAlignment.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8635F0D12AA5246200418EA0 = {
 			isa = PBXGroup;
 			children = (
@@ -78,11 +121,11 @@
 		8635F0DC2AA5246200418EA0 /* EasyLocalize */ = {
 			isa = PBXGroup;
 			children = (
+				8609E2D92AB3278A00509EEE /* UserInterface */,
 				869CEE452AB2558E00C84FE7 /* Models */,
 				869CEE2D2AB24EBF00C84FE7 /* Services */,
 				869CEE282AB24E6B00C84FE7 /* Constants */,
 				869CEE272AB24E5E00C84FE7 /* Core */,
-				8635F0EC2AA5254300418EA0 /* MainView */,
 				8635F0E12AA5246300418EA0 /* Assets.xcassets */,
 				8635F0E32AA5246300418EA0 /* Preview Content */,
 			);
@@ -97,13 +140,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		8635F0EC2AA5254300418EA0 /* MainView */ = {
+		8635F0EC2AA5254300418EA0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				8635F0DF2AA5246200418EA0 /* MainView.swift */,
-				8635F0ED2AA5256A00418EA0 /* MainViewModel.swift */,
+				8609E2DC2AB327E100509EEE /* View */,
+				8609E2DB2AB327CC00509EEE /* Screen */,
+				8609E2DA2AB327C700509EEE /* ViewModel */,
 			);
-			path = MainView;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		869CEE272AB24E5E00C84FE7 /* Core */ = {
@@ -204,6 +248,8 @@
 				hi,
 			);
 			mainGroup = 8635F0D12AA5246200418EA0;
+			packageReferences = (
+			);
 			productRefGroup = 8635F0DB2AA5246200418EA0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -231,9 +277,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8609E2DE2AB327E800509EEE /* TranslateBlock.swift in Sources */,
 				8635F0E02AA5246200418EA0 /* MainView.swift in Sources */,
+				86C0A65E2AB4479100F91FCC /* TextWithLeadingAlignment.swift in Sources */,
 				869CEE2A2AB24E7C00C84FE7 /* Config.swift in Sources */,
 				8635F0DE2AA5246200418EA0 /* EasyLocalizeApp.swift in Sources */,
+				86C0A65A2AB4464700F91FCC /* MainLocalizeView.swift in Sources */,
+				86C0A65C2AB4477C00F91FCC /* ChoosePathBlock.swift in Sources */,
 				8635F0EE2AA5256A00418EA0 /* MainViewModel.swift in Sources */,
 				866DFD032AB2F49900362D43 /* LocalizedStrings.swift in Sources */,
 				869CEE2C2AB24EBA00C84FE7 /* NetworkingService.swift in Sources */,
@@ -314,7 +364,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -368,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -397,7 +447,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = WladuardoTeam.EasyLocalize;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -426,7 +476,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = WladuardoTeam.EasyLocalize;
 				PRODUCT_NAME = "$(TARGET_NAME)";

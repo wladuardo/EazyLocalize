@@ -20,7 +20,7 @@ public extension HTTPClient {
         guard let url = endpoint.url else {
             return .failure(.invalidURL)
         }
-        var request: URLRequest = .init(url: url, timeoutInterval: 10)
+        var request: URLRequest = .init(url: url, timeoutInterval: 60)
         request.httpMethod = endpoint.method.rawValue
         request.allHTTPHeaderFields = endpoint.header
         request.httpBody = endpoint.body.data

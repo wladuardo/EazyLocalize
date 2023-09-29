@@ -7,4 +7,10 @@
 */
 
 "addTranslation" = "Übersetzung hinzufügen";
-"choosePath" = "Wählen Sie den Pfad zu Ihrem XCode-Projekt";
+"choosePath" = "Wählen Sie den Pfad zu Ihrem Xcode-Projekt";
+"choose" = "wählen";
+
+"enterYourKey" = "Geben Sie den Schlüssel hier ein (ohne Anführungszeichen)";
+"enterTextToTranslate" = "Geben Sie den Satz ein, der übersetzt werden soll";
+
+"chooseAnotherPath" = "Wähle einen anderen Weg";

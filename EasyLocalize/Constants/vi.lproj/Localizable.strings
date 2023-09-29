@@ -7,4 +7,10 @@
 */
 
 "addTranslation" = "Thêm bản dịch";
-"choosePath" = "Chọn đường dẫn đến dự án XCode của bạn";
+"choosePath" = "Chọn đường dẫn đến dự án Xcode của bạn";
+"choose" = "chọn";
+
+"enterYourKey" = "Nhập khóa ở đây (không có dấu ngoặc)";
+"enterTextToTranslate" = "Nhập cụm từ cần dịch";
+
+"chooseAnotherPath" = "Chọn một con đường khác";

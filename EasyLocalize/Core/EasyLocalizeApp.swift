@@ -13,5 +13,6 @@ struct EasyLocalizeApp: App {
         WindowGroup {
             MainView()
         }
+        .windowResizability(.contentSize)
     }
 }

@@ -7,4 +7,10 @@
 */
 
 "addTranslation" = "翻訳を追加する";
-"choosePath" = "XCodeプロジェクトへのパスを選択してください";
+"choosePath" = "Xcodeプロジェクトへのパスを選択してください";
+"choose" = "選ぶ";
+
+"enterYourKey" = "ここにキーを入力してください（引用符なし）";
+"enterTextToTranslate" = "翻訳したいフレーズを入力してください";
+
+"chooseAnotherPath" = "別の道を選ぶ";

@@ -7,4 +7,10 @@
 */
 
 "addTranslation" = "Lägg till översättning";
-"choosePath" = "Välj sökvägen till ditt XCode-projekt";
+"choosePath" = "Välj sökvägen till ditt Xcode-projekt";
+"choose" = "välja";
+
+"enterYourKey" = "Ange nyckeln här (utan citationstecken)";
+"enterTextToTranslate" = "Ange frasen som ska översättas";
+
+"chooseAnotherPath" = "Välj en annan väg";

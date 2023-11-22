@@ -20,18 +20,18 @@ final class NetworkingService {
     public func sendRequest(with textToTranslate: String, targetLanguages: [String]) async throws -> [String: String] {
         let model: SendMessageModel = .init(role: .user, content: getPromt(with: textToTranslate, targetLanguages: targetLanguages))
         let requestModel: ChatGPTSendRequest = .init(model: model)
-        let result = await networkService.chatGPTAPI.sendMessage(params: requestModel)
         
-        switch result {
-        case .success(let success):
-            let result: [String]? = success.choices?.compactMap { return $0.message.content }
-            guard let stringResult = result?.first else {
+        do {
+            let result = try await networkService.chatGPTAPI.sendMessage(params: requestModel)
+            let choices: [String]? = result.choices?.compactMap { return $0.message.content }
+            
+            guard let stringResult = choices?.first else {
                 throw NSError(domain: "Response is nil", code: 0)
             }
             
             return try decodeJsonString(stringResult)
-        case .failure(let failure):
-            throw failure
+        } catch {
+            throw error
         }
     }
     

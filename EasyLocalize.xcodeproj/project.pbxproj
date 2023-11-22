@@ -13,8 +13,10 @@
 		8635F0E22AA5246300418EA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8635F0E12AA5246300418EA0 /* Assets.xcassets */; };
 		8635F0E52AA5246300418EA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8635F0E42AA5246300418EA0 /* Preview Assets.xcassets */; };
 		8635F0EE2AA5256A00418EA0 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8635F0ED2AA5256A00418EA0 /* MainViewModel.swift */; };
+		8644D0CD2AD94D8A00066D49 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8644D0CC2AD94D8A00066D49 /* AppError.swift */; };
 		866DFCF62AB2F1EF00362D43 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 866DFCF82AB2F1EF00362D43 /* Localizable.strings */; };
 		866DFD032AB2F49900362D43 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866DFD022AB2F49900362D43 /* LocalizedStrings.swift */; };
+		869613F72B0E5834003B13B4 /* TransparentVisualEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869613F62B0E5834003B13B4 /* TransparentVisualEffect.swift */; };
 		869CEE2A2AB24E7C00C84FE7 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869CEE292AB24E7C00C84FE7 /* Config.swift */; };
 		869CEE2C2AB24EBA00C84FE7 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869CEE2B2AB24EBA00C84FE7 /* NetworkingService.swift */; };
 		869CEE442AB254C500C84FE7 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 869CEE432AB254C500C84FE7 /* Networking */; };
@@ -33,6 +35,7 @@
 		8635F0E42AA5246300418EA0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8635F0E62AA5246300418EA0 /* EasyLocalize.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EasyLocalize.entitlements; sourceTree = "<group>"; };
 		8635F0ED2AA5256A00418EA0 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		8644D0CC2AD94D8A00066D49 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		866DFCF72AB2F1EF00362D43 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		866DFCF92AB2F1F200362D43 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		866DFCFA2AB2F1F300362D43 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		866DFD002AB2F1F800362D43 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		866DFD012AB2F20500362D43 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		866DFD022AB2F49900362D43 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
+		869613F62B0E5834003B13B4 /* TransparentVisualEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentVisualEffect.swift; sourceTree = "<group>"; };
 		869CEE292AB24E7C00C84FE7 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		869CEE2B2AB24EBA00C84FE7 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		869CEE422AB2545A00C84FE7 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 				86C0A6592AB4464700F91FCC /* MainLocalizeView.swift */,
 				86C0A65B2AB4477C00F91FCC /* ChoosePathBlock.swift */,
 				86C0A65D2AB4479100F91FCC /* TextWithLeadingAlignment.swift */,
+				869613F62B0E5834003B13B4 /* TransparentVisualEffect.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				869CEE462AB2559C00C84FE7 /* SendMessageModel.swift */,
+				8644D0CC2AD94D8A00066D49 /* AppError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -281,6 +287,7 @@
 				8635F0E02AA5246200418EA0 /* MainView.swift in Sources */,
 				86C0A65E2AB4479100F91FCC /* TextWithLeadingAlignment.swift in Sources */,
 				869CEE2A2AB24E7C00C84FE7 /* Config.swift in Sources */,
+				8644D0CD2AD94D8A00066D49 /* AppError.swift in Sources */,
 				8635F0DE2AA5246200418EA0 /* EasyLocalizeApp.swift in Sources */,
 				86C0A65A2AB4464700F91FCC /* MainLocalizeView.swift in Sources */,
 				86C0A65C2AB4477C00F91FCC /* ChoosePathBlock.swift in Sources */,
@@ -288,6 +295,7 @@
 				866DFD032AB2F49900362D43 /* LocalizedStrings.swift in Sources */,
 				869CEE2C2AB24EBA00C84FE7 /* NetworkingService.swift in Sources */,
 				869CEE472AB2559C00C84FE7 /* SendMessageModel.swift in Sources */,
+				869613F72B0E5834003B13B4 /* TransparentVisualEffect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

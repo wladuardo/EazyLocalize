@@ -14,26 +14,33 @@ struct MainLocalizeView: View {
     @State private var keyName: String = ""
     @State private var textToTranslate: String = ""
     @State private var needToClear: Bool = false
+    @State private var isTranslatesAdded: Bool = false
     
     var body: some View {
         HStack {
             leftBlock
             rightBlock
         }
+        .onReceive(viewModel.$isTranslatesAdded) { isTranslatesAdded in
+            self.isTranslatesAdded = isTranslatesAdded
+        }
+        .alert(isPresented: $isTranslatesAdded) {
+            Alert(title: Text("Success"),
+                  message: Text("Translates added successfully"),
+                  dismissButton: .cancel(Text("OK")){ clearView() })
+        }
     }
     
     private var leftBlock: some View {
         VStack {
             TextWithLeadingAlignment(text: "Введите название для ключа")
-            TextField(String.enterYourKey, text: $keyName)
+            TextField(String.enterYourKey, text: $keyName, axis: .vertical)
                 .padding()
-                .textFieldStyle(.roundedBorder)
             
             TextWithLeadingAlignment(text: "Запросить перевод в ChatGPT")
             HStack {
-                TextField(String.enterTextToTranslate, text: $textToTranslate)
+                TextField(String.enterTextToTranslate, text: $textToTranslate, axis: .vertical)
                     .padding()
-                    .textFieldStyle(.roundedBorder)
                 Button(action: { viewModel.translateText(textToTranslate) }, label: {
                     Text("Перевести")
                         .fontWeight(.semibold)
@@ -42,15 +49,8 @@ struct MainLocalizeView: View {
             
             Spacer()
             HStack {
-                Button("Добавить новую локализацию", action: {
-                    needToClear.toggle()
-                    textToTranslate.removeAll()
-                    keyName.removeAll()
-                    viewModel.isSaved.toggle()
-                })
-                Button(String.chooseAnotherPath, action: {
-                    projectPath = nil
-                })
+                Button("Очистить", action: { clearView() })
+                Button(String.chooseAnotherPath, action: { projectPath = nil })
             }
             Spacer()
         }
@@ -85,5 +85,12 @@ struct MainLocalizeView: View {
             }
             .blur(radius: viewModel.isTranslatingInProgress ? 5 : 0)
         }
+    }
+    
+    private func clearView() {
+        needToClear.toggle()
+        textToTranslate.removeAll()
+        keyName.removeAll()
+        viewModel.isSaved = false
     }
 }

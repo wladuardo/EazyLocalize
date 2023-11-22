@@ -14,6 +14,8 @@ final class MainViewModel: ObservableObject {
     @Published var isTranslatingInProgress: Bool = false
     @Published var saveSignal: Bool = true
     @Published var isSaved: Bool = false
+    @Published var isTranslatesAdded: Bool = false
+    @Published var error: AppError?
     
     private var localizableStringPaths: [URL] = []
     private let networkingService: NetworkingService = .shared
@@ -42,28 +44,36 @@ final class MainViewModel: ObservableObject {
                     existingKeyValuePairs.append("\n\(newKeyValuePair)")
                     
                     guard FileManager.default.isWritableFile(atPath: localizableStringPath.path) else {
-                        print("У вас нет разрешения на запись файла \"Localizable.strings\" в папке \(fileName)")
+                        showError(.noAccess)
                         return
                     }
                     
                     try existingKeyValuePairs.write(to: localizableStringPath, atomically: true, encoding: .utf8)
+                    isTranslatesAdded = true
                 }
             } catch {
-                print("Ошибка при обновлении файла: \(error.localizedDescription)")
+                showError(.updateError(description: error.localizedDescription))
             }
         }
     }
     
     func translateText(_ textToTranslate: String) {
         Task {
-            guard !textToTranslate.isEmpty
-                    && textToTranslate.count > 1 else { return }
-            let languageNames = fileNames.map { $0.replacingOccurrences(of: ".lproj", with: "") }
-            await MainActor.run { isTranslatingInProgress = true }
-            let translates = try await networkingService.sendRequest(with: textToTranslate, targetLanguages: languageNames)
-            await MainActor.run {
-                isTranslatingInProgress = false
-                translatesDictionary = translates
+            do {
+                guard !textToTranslate.isEmpty && textToTranslate.count > 1 else {
+                    showError(.emptyTextToTranslate)
+                    return
+                }
+                await MainActor.run { isTranslatingInProgress = true }
+                let languageNames = fileNames.map { $0.replacingOccurrences(of: ".lproj", with: "") }
+                let translates = try await networkingService.sendRequest(with: textToTranslate, targetLanguages: languageNames)
+                await MainActor.run {
+                    isTranslatingInProgress = false
+                    translatesDictionary = translates
+                }
+            } catch {
+                await MainActor.run { isTranslatingInProgress = false }
+                showError(.translateError(description: error.localizedDescription))
             }
         }
     }
@@ -110,5 +120,13 @@ private extension MainViewModel {
                 }
             }
         })
+    }
+    
+    func showError(_ error: AppError) {
+        Task {
+            await MainActor.run {
+                self.error = error
+            }
+        }
     }
 }

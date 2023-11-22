@@ -23,8 +23,7 @@ struct TranslateBlock: View {
                 Spacer()
             }
             HStack {
-                TextField(fileName, text: $translate)
-                    .textFieldStyle(.roundedBorder)
+                TextField(fileName, text: $translate, axis: .vertical)
                 Toggle(isOn: $isNeededToSave, label: {})
             }
         }

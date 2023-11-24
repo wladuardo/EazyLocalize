@@ -14,3 +14,11 @@
 "enterTextToTranslate" = "Введите фразу, которую нужно перевести";
 
 "chooseAnotherPath" = "Выберите другой путь";
+"getTranslateFromChat" = "Запросить перевод в ChatGPT";
+"enterNameForKey" = "Введите название для ключа";
+"localizableFound" = "Обнаружены следующие файлы Localizable.strings в вашем проекте:";
+
+"clear" = "Очистить";
+"translate" = "перевести";
+"success" = "Успех";
+"translatesAdded" = "Переводы успешно добавлены";

@@ -14,3 +14,11 @@
 "enterTextToTranslate" = "Nhập cụm từ cần dịch";
 
 "chooseAnotherPath" = "Chọn một con đường khác";
+"getTranslateFromChat" = "Yêu cầu dịch trong ChatGPT";
+"enterNameForKey" = "Nhập tên cho khóa";
+"localizableFound" = "Các tệp Localizable.strings sau đã được tìm thấy trong dự án của bạn:";
+
+"clear" = "Xoá";
+"translate" = "dịch";
+"success" = "Thành công";
+"translatesAdded" = "Dịch thành công đã được thêm";

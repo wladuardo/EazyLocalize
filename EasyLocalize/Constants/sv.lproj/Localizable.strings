@@ -14,3 +14,11 @@
 "enterTextToTranslate" = "Ange frasen som ska översättas";
 
 "chooseAnotherPath" = "Välj en annan väg";
+"getTranslateFromChat" = "Begära översättning i ChatGPT";
+"enterNameForKey" = "Ange ett namn för nyckeln";
+"localizableFound" = "Följande Localizable.strings-filer hittades i ditt projekt:";
+
+"clear" = "Rensa";
+"translate" = "översätta";
+"success" = "Framgång";
+"translatesAdded" = "Översättningar har lagts till framgångsrikt";

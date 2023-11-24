@@ -14,3 +14,11 @@
 "enterTextToTranslate" = "Digite a frase a ser traduzida";
 
 "chooseAnotherPath" = "Escolha outro caminho";
+"getTranslateFromChat" = "Solicitar tradução no ChatGPT";
+"enterKeyName" = "Digite um nome para a chave";
+"localizableFound" = "Os seguintes arquivos Localizable.strings foram encontrados no seu projeto:";
+
+"clear" = "Limpar";
+"translate" = "traduzir";
+"success" = "Sucesso";
+"translatesAdded" = "Traduções adicionadas com sucesso";

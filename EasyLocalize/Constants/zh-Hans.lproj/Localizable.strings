@@ -14,3 +14,11 @@
 "enterTextToTranslate" = "输入要翻译的短语";
 
 "chooseAnotherPath" = "选择另一条路";
+"getTranslateFromChat" = "在ChatGPT请求翻译";
+"enterNameForKey" = "输入键的名称";
+"localizableFound" = "在您的项目中找到了以下 Localizable.strings 文件:";
+
+"clear" = "清除";
+"translate" = "翻译";
+"success" = "成功";
+"translatesAdded" = "翻译成功添加";

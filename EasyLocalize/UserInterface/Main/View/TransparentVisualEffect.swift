@@ -9,12 +9,16 @@ import SwiftUI
 
 struct TransparentVisualEffect: NSViewRepresentable {
     func makeNSView(context: Self.Context) -> NSView {
-        let visualEffect = NSVisualEffectView()
-        visualEffect.blendingMode = .behindWindow
-        visualEffect.state = .active
-        visualEffect.material = .fullScreenUI
-        return visualEffect
+        return BlurEffectUIView()
     }
     
     func updateNSView(_ nsView: NSView, context: Context) { }
+}
+
+class BlurEffectUIView: NSVisualEffectView {
+    override func viewDidMoveToWindow() {
+        blendingMode = .behindWindow
+        state = .active
+        material = .menu
+    }
 }

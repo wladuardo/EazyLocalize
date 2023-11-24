@@ -14,3 +14,11 @@
 "enterTextToTranslate" = "翻訳したいフレーズを入力してください";
 
 "chooseAnotherPath" = "別の道を選ぶ";
+"getTranslateFromChat" = "ChatGPTで翻訳をリクエストする";
+"enterNameForKey" = "キーの名前を入力してください";
+"localizableFound" = "プロジェクトで次の Localizable.strings ファイルが見つかりました:";
+
+"clear" = "クリア";
+"translate" = "翻訳する";
+"success" = "成功";
+"translatesAdded" = "翻訳が成功補完されました";

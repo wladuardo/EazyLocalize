@@ -79,11 +79,9 @@ final class MainViewModel: ObservableObject {
     }
     
     func giveSignalToSave() {
-        Task {
-            await MainActor.run {
-                saveSignal = true
-                isSaved = true
-            }
+        Task { @MainActor in
+            saveSignal = true
+            isSaved = true
         }
     }
     
@@ -123,10 +121,8 @@ private extension MainViewModel {
     }
     
     func showError(_ error: AppError) {
-        Task {
-            await MainActor.run {
-                self.error = error
-            }
+        Task { @MainActor in
+            self.error = error
         }
     }
 }

@@ -14,3 +14,11 @@
 "enterTextToTranslate" = "अनुवाद करने के लिए शब्द दर्ज करें";
 
 "chooseAnotherPath" = "एक दूसरा मार्ग चुनें";
+"getTranslateFromChat" = "ChatGPT में अनुवाद का अनुरोध करें";
+"enterNameForKey" = "कुंजी के लिए एक नाम दर्ज करें";
+"localizableFound" = "आपके परियोजना में निम्नलिखित Localizable.strings फ़ाइलें मिलीं:";
+
+"clear" = "साफ करें";
+"translate" = "अनुवाद करें";
+"success" = "सफलता";
+"translatesAdded" = "अनुवाद सफलतापूर्वक जोड़े गए हैं";

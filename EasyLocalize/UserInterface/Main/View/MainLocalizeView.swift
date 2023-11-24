@@ -15,41 +15,46 @@ struct MainLocalizeView: View {
     @State private var textToTranslate: String = ""
     @State private var needToClear: Bool = false
     @State private var isTranslatesAdded: Bool = false
+    @State private var isAlertPresented: Bool = false
+    @State private var error: AppError?
     
     var body: some View {
         HStack {
             leftBlock
             rightBlock
         }
-        .onReceive(viewModel.$isTranslatesAdded) { isTranslatesAdded in
-            self.isTranslatesAdded = isTranslatesAdded
-        }
-        .alert(isPresented: $isTranslatesAdded) {
-            Alert(title: Text("Success"),
-                  message: Text("Translates added successfully"),
-                  dismissButton: .cancel(Text("OK")){ clearView() })
-        }
+        .onReceive(viewModel.$isTranslatesAdded) { isTranslatesAdded = $0 }
+        .onReceive(viewModel.$error) { onRecieveErrorAction($0) }
+        
+        .alert(error?.title ?? "Unexpected situation",
+               isPresented: $isAlertPresented,
+               actions: { Button("OK") { clearView() } },
+               message: { Text(error?.description ?? "We got error but error is nil") })
+        .alert(String.success,
+               isPresented: $isTranslatesAdded,
+               actions: { Button("OK") { clearView() } },
+               message: { Text(String.translatesAdded) })
     }
     
     private var leftBlock: some View {
         VStack {
-            TextWithLeadingAlignment(text: "Введите название для ключа")
+            TextWithLeadingAlignment(text: .enterNameForKey)
             TextField(String.enterYourKey, text: $keyName, axis: .vertical)
                 .padding()
             
-            TextWithLeadingAlignment(text: "Запросить перевод в ChatGPT")
+            TextWithLeadingAlignment(text: .getTranslateFromChat)
             HStack {
                 TextField(String.enterTextToTranslate, text: $textToTranslate, axis: .vertical)
                     .padding()
                 Button(action: { viewModel.translateText(textToTranslate) }, label: {
-                    Text("Перевести")
+                    Text(String.translate)
                         .fontWeight(.semibold)
                 })
             }
             
             Spacer()
             HStack {
-                Button("Очистить", action: { clearView() })
+                Button(String.clear, action: clearView)
                 Button(String.chooseAnotherPath, action: { projectPath = nil })
             }
             Spacer()
@@ -63,22 +68,24 @@ struct MainLocalizeView: View {
             }
             VStack {
                 ScrollView {
-                    TextWithLeadingAlignment(text: "Обнаружены следующие Localizable.strings файлы в вашем проекте:")
+                    TextWithLeadingAlignment(text: .localizableFound)
+                    
                     ForEach(viewModel.fileNames, id: \.self) { fileName in
                         TranslateBlock(fileName: fileName,
                                        viewModel: viewModel,
                                        keyName: $keyName,
                                        needToClear: $needToClear)
                     }
-                    Button(action: { viewModel.giveSignalToSave() }, label: {
-                        if !viewModel.isSaved {
-                            Text(String.addTranslation)
-                                .fontWeight(.semibold)
-                        } else {
+                    
+                    Button(action: viewModel.giveSignalToSave) {
+                        if viewModel.isSaved {
                             Image(systemName: "checkmark.diamond.fill")
                                 .foregroundColor(.green)
+                        } else {
+                            Text(String.addTranslation)
+                                .fontWeight(.semibold)
                         }
-                    })
+                    }
                 }
                 .scrollIndicators(.hidden)
                 .scrollDisabled(viewModel.isTranslatingInProgress)
@@ -92,5 +99,13 @@ struct MainLocalizeView: View {
         textToTranslate.removeAll()
         keyName.removeAll()
         viewModel.isSaved = false
+        error = nil
+    }
+    
+    private func onRecieveErrorAction(_ error: AppError?) {
+        guard let error else { return }
+        self.error = error
+        viewModel.error = nil
+        isAlertPresented.toggle()
     }
 }

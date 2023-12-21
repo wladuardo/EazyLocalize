@@ -17,6 +17,7 @@ struct MainLocalizeView: View {
     @State private var isTranslatesAdded: Bool = false
     @State private var isAlertPresented: Bool = false
     @State private var error: AppError?
+    @State private var isPaywallPresented: Bool = false
     
     var body: some View {
         HStack {
@@ -46,11 +47,17 @@ struct MainLocalizeView: View {
             HStack {
                 TextField(String.enterTextToTranslate, text: $textToTranslate, axis: .vertical)
                     .padding()
-                Button(action: { viewModel.translateText(textToTranslate) }, label: {
+                Button(action: { 
+                    isPaywallPresented.toggle()
+//                    viewModel.translateText(textToTranslate)
+                }, label: {
                     Text(String.translate)
                         .fontWeight(.semibold)
                 })
             }
+            .sheet(isPresented: $isPaywallPresented, content: {
+                PaywallScreen()
+            })
             
             Spacer()
             HStack {

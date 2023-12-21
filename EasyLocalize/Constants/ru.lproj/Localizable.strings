@@ -22,3 +22,10 @@
 "translate" = "перевести";
 "success" = "Успех";
 "translatesAdded" = "Переводы успешно добавлены";
+
+"noAccess" = "Нет разрешения на запись файла";
+"updateError" = "Ошибка обновления файла";
+"translateError" = "Ошибка при получении перевода";
+"emptyTextToTranslate" = "Нечего переводить";
+"emptyTextToTranslateDesc" = "Вы не ввели текст, который нужно перевести";
+"noAccessDesc" = "У вас нет разрешения на запись файла \"Localizable.strings\"";

@@ -22,3 +22,10 @@
 "translate" = "अनुवाद करें";
 "success" = "सफलता";
 "translatesAdded" = "अनुवाद सफलतापूर्वक जोड़े गए हैं";
+
+"noAccess" = "फ़ाइल लिखने की अनुमति नहीं है";
+"updateError" = "फ़ाइल अपडेट त्रुटि";
+"translateError" = "अनुवाद प्राप्ति में त्रुटि";
+"emptyTextToTranslate" = "अनुवाद करने के लिए कुछ नहीं";
+"emptyTextToTranslateDesc" = "आपने उस पाठ को दर्ज नहीं किया है जो अनुवाद करना है";
+"noAccessDesc" = "आपको फ़ाइल \"Localizable.strings\" लिखने की अनुमति नहीं है";

@@ -21,4 +21,10 @@ extension String {
     static let translate = NSLocalizedString("translate", comment: "").capitalized
     static let success = NSLocalizedString("success", comment: "")
     static let translatesAdded = NSLocalizedString("translatesAdded", comment: "")
+    static let noAccess = NSLocalizedString("noAccess", comment: "")
+    static let updateError = NSLocalizedString("updateError", comment: "").capitalized
+    static let translateError = NSLocalizedString("translateError", comment: "")
+    static let emptyTextToTranslate = NSLocalizedString("emptyTextToTranslate", comment: "")
+    static let emptyTextToTranslateDesc = NSLocalizedString("emptyTextToTranslateDesc", comment: "")
+    static let noAccessDesc = NSLocalizedString("noAccessDesc", comment: "")
 }

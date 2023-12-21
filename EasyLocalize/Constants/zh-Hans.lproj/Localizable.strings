@@ -22,3 +22,10 @@
 "translate" = "翻译";
 "success" = "成功";
 "translatesAdded" = "翻译成功添加";
+
+"noAccess" = "没有文件写入权限";
+"updateError" = "文件更新错误";
+"translateError" = "获取翻译时出错";
+"emptyTextToTranslate" = "没什么可翻译的";
+"emptyTextToTranslateDesc" = "您没有输入需要翻译的文本";
+"noAccessDesc" = "您没有写入 \"Localizable.strings\" 文件的权限";

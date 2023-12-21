@@ -22,3 +22,10 @@
 "translate" = "traduire";
 "success" = "Succès";
 "translatesAdded" = "Traductions ajoutées avec succès";
+
+"noAccess" = "Pas de permission d'écriture du fichier";
+"updateError" = "Erreur de mise à jour du fichier";
+"translateError" = "Erreur lors de la récupération de la traduction";
+"emptyTextToTranslate" = "Rien à traduire";
+"emptyTextToTranslateDesc" = "Vous n'avez pas saisi le texte à traduire";
+"noAccessDesc" = "Vous n'avez pas la permission d'écrire le fichier \"Localizable.strings\"";

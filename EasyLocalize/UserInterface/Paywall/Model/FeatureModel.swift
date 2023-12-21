@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+enum Features: CaseIterable {
+    case unlimitedTranslates
+    case chatGPT
+    
+    var title: String {
+        switch self {
+        case .unlimitedTranslates:
+            return "Unlimited amount of translates"
+        case .chatGPT:
+            return "Use ChatGPT for fast translate"
+        }
+    }
+}

@@ -5,4 +5,33 @@
 //  Created by Владислав Ковальский on 21.12.2023.
 //
 
-import Foundation
+import SwiftUI
+import StoreKit
+
+struct ProductView: View {
+    let product: Product
+    let isSelected: Bool
+    
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(product.displayName)
+                    .font(.system(size: 18, weight: .bold))
+                Text(product.displayPrice)
+                    .font(.system(size: 24, weight: .bold))
+            }
+            .padding(.leading)
+            Spacer()
+        }
+        .frame(width: 150, height: 70)
+        .background {
+            RoundedRectangle(cornerRadius: 20)
+                .foregroundStyle(.orange)
+                .addBorder(isSelected ? .green : .clear, width: 3, cornerRadius: 20)
+        }
+    }
+}
+
+#Preview {
+    ProductView(product: PurchaseService.shared.products.first!, isSelected: true)
+}

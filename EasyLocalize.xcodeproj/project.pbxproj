@@ -14,6 +14,9 @@
 		8635F0E52AA5246300418EA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8635F0E42AA5246300418EA0 /* Preview Assets.xcassets */; };
 		8635F0EE2AA5256A00418EA0 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8635F0ED2AA5256A00418EA0 /* MainViewModel.swift */; };
 		8644D0CD2AD94D8A00066D49 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8644D0CC2AD94D8A00066D49 /* AppError.swift */; };
+		865D5CEC2B34574F0084AEE1 /* FeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D5CEB2B34574F0084AEE1 /* FeatureView.swift */; };
+		865D5CEF2B3457590084AEE1 /* FeatureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D5CEE2B3457590084AEE1 /* FeatureModel.swift */; };
+		865D5CF12B3457830084AEE1 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865D5CF02B3457830084AEE1 /* ProductView.swift */; };
 		866DFCF62AB2F1EF00362D43 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 866DFCF82AB2F1EF00362D43 /* Localizable.strings */; };
 		866DFD032AB2F49900362D43 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866DFD022AB2F49900362D43 /* LocalizedStrings.swift */; };
 		869613F72B0E5834003B13B4 /* TransparentVisualEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869613F62B0E5834003B13B4 /* TransparentVisualEffect.swift */; };
@@ -24,6 +27,10 @@
 		86C0A65A2AB4464700F91FCC /* MainLocalizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0A6592AB4464700F91FCC /* MainLocalizeView.swift */; };
 		86C0A65C2AB4477C00F91FCC /* ChoosePathBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0A65B2AB4477C00F91FCC /* ChoosePathBlock.swift */; };
 		86C0A65E2AB4479100F91FCC /* TextWithLeadingAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0A65D2AB4479100F91FCC /* TextWithLeadingAlignment.swift */; };
+		86EA07262B3426E90050F41C /* PaywallScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA07252B3426E90050F41C /* PaywallScreen.swift */; };
+		86EA072A2B34296F0050F41C /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA07292B34296F0050F41C /* PurchaseService.swift */; };
+		86EA07302B3442A10050F41C /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA072F2B3442A10050F41C /* ViewExtension.swift */; };
+		86EA07322B3447B10050F41C /* PaywallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA07312B3447B10050F41C /* PaywallViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +43,9 @@
 		8635F0E62AA5246300418EA0 /* EasyLocalize.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EasyLocalize.entitlements; sourceTree = "<group>"; };
 		8635F0ED2AA5256A00418EA0 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		8644D0CC2AD94D8A00066D49 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		865D5CEB2B34574F0084AEE1 /* FeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureView.swift; sourceTree = "<group>"; };
+		865D5CEE2B3457590084AEE1 /* FeatureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureModel.swift; sourceTree = "<group>"; };
+		865D5CF02B3457830084AEE1 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		866DFCF72AB2F1EF00362D43 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		866DFCF92AB2F1F200362D43 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		866DFCFA2AB2F1F300362D43 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -55,6 +65,11 @@
 		86C0A6592AB4464700F91FCC /* MainLocalizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLocalizeView.swift; sourceTree = "<group>"; };
 		86C0A65B2AB4477C00F91FCC /* ChoosePathBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePathBlock.swift; sourceTree = "<group>"; };
 		86C0A65D2AB4479100F91FCC /* TextWithLeadingAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWithLeadingAlignment.swift; sourceTree = "<group>"; };
+		86EA07252B3426E90050F41C /* PaywallScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallScreen.swift; sourceTree = "<group>"; };
+		86EA07292B34296F0050F41C /* PurchaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
+		86EA072B2B34336F0050F41C /* Subscriptions.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Subscriptions.storekit; sourceTree = "<group>"; };
+		86EA072F2B3442A10050F41C /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		86EA07312B3447B10050F41C /* PaywallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +87,7 @@
 		8609E2D92AB3278A00509EEE /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
+				86EA07242B3426DF0050F41C /* Paywall */,
 				8635F0EC2AA5254300418EA0 /* Main */,
 			);
 			path = UserInterface;
@@ -126,12 +142,12 @@
 		8635F0DC2AA5246200418EA0 /* EasyLocalize */ = {
 			isa = PBXGroup;
 			children = (
-				8609E2D92AB3278A00509EEE /* UserInterface */,
-				869CEE452AB2558E00C84FE7 /* Models */,
-				869CEE2D2AB24EBF00C84FE7 /* Services */,
-				869CEE282AB24E6B00C84FE7 /* Constants */,
 				869CEE272AB24E5E00C84FE7 /* Core */,
-				8635F0E12AA5246300418EA0 /* Assets.xcassets */,
+				869CEE282AB24E6B00C84FE7 /* Constants */,
+				869CEE2D2AB24EBF00C84FE7 /* Services */,
+				869CEE452AB2558E00C84FE7 /* Models */,
+				86EA072E2B34429A0050F41C /* Extensions */,
+				8609E2D92AB3278A00509EEE /* UserInterface */,
 				8635F0E32AA5246300418EA0 /* Preview Content */,
 			);
 			path = EasyLocalize;
@@ -155,11 +171,46 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		865D5CE82B3457390084AEE1 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				86EA07252B3426E90050F41C /* PaywallScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		865D5CE92B34573D0084AEE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				865D5CEB2B34574F0084AEE1 /* FeatureView.swift */,
+				865D5CF02B3457830084AEE1 /* ProductView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		865D5CEA2B3457410084AEE1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				86EA07312B3447B10050F41C /* PaywallViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		865D5CED2B3457510084AEE1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				865D5CEE2B3457590084AEE1 /* FeatureModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		869CEE272AB24E5E00C84FE7 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				8635F0E62AA5246300418EA0 /* EasyLocalize.entitlements */,
 				8635F0DD2AA5246200418EA0 /* EasyLocalizeApp.swift */,
+				8635F0E12AA5246300418EA0 /* Assets.xcassets */,
+				86EA072B2B34336F0050F41C /* Subscriptions.storekit */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -177,7 +228,8 @@
 		869CEE2D2AB24EBF00C84FE7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				869CEE2B2AB24EBA00C84FE7 /* NetworkingService.swift */,
+				86EA07282B3429670050F41C /* Purchase */,
+				86EA07272B34295D0050F41C /* Networking */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -196,6 +248,41 @@
 				8644D0CC2AD94D8A00066D49 /* AppError.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		86EA07242B3426DF0050F41C /* Paywall */ = {
+			isa = PBXGroup;
+			children = (
+				865D5CED2B3457510084AEE1 /* Model */,
+				865D5CEA2B3457410084AEE1 /* ViewModel */,
+				865D5CE92B34573D0084AEE1 /* View */,
+				865D5CE82B3457390084AEE1 /* Screen */,
+			);
+			path = Paywall;
+			sourceTree = "<group>";
+		};
+		86EA07272B34295D0050F41C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				869CEE2B2AB24EBA00C84FE7 /* NetworkingService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		86EA07282B3429670050F41C /* Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				86EA07292B34296F0050F41C /* PurchaseService.swift */,
+			);
+			path = Purchase;
+			sourceTree = "<group>";
+		};
+		86EA072E2B34429A0050F41C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				86EA072F2B3442A10050F41C /* ViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,17 +370,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				865D5CF12B3457830084AEE1 /* ProductView.swift in Sources */,
 				8609E2DE2AB327E800509EEE /* TranslateBlock.swift in Sources */,
 				8635F0E02AA5246200418EA0 /* MainView.swift in Sources */,
+				865D5CEF2B3457590084AEE1 /* FeatureModel.swift in Sources */,
+				86EA07322B3447B10050F41C /* PaywallViewModel.swift in Sources */,
+				86EA07262B3426E90050F41C /* PaywallScreen.swift in Sources */,
 				86C0A65E2AB4479100F91FCC /* TextWithLeadingAlignment.swift in Sources */,
 				869CEE2A2AB24E7C00C84FE7 /* Config.swift in Sources */,
 				8644D0CD2AD94D8A00066D49 /* AppError.swift in Sources */,
 				8635F0DE2AA5246200418EA0 /* EasyLocalizeApp.swift in Sources */,
 				86C0A65A2AB4464700F91FCC /* MainLocalizeView.swift in Sources */,
+				86EA072A2B34296F0050F41C /* PurchaseService.swift in Sources */,
 				86C0A65C2AB4477C00F91FCC /* ChoosePathBlock.swift in Sources */,
 				8635F0EE2AA5256A00418EA0 /* MainViewModel.swift in Sources */,
 				866DFD032AB2F49900362D43 /* LocalizedStrings.swift in Sources */,
 				869CEE2C2AB24EBA00C84FE7 /* NetworkingService.swift in Sources */,
+				86EA07302B3442A10050F41C /* ViewExtension.swift in Sources */,
+				865D5CEC2B34574F0084AEE1 /* FeatureView.swift in Sources */,
 				869CEE472AB2559C00C84FE7 /* SendMessageModel.swift in Sources */,
 				869613F72B0E5834003B13B4 /* TransparentVisualEffect.swift in Sources */,
 			);
@@ -356,6 +450,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -416,6 +511,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -447,9 +543,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EasyLocalize/Preview Content\"";
 				DEVELOPMENT_TEAM = 5HWZ52VHNS;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EasyLocalize/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = EasyLocalize;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Мы хотим получить доступ к вашим файлам для редактирования";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -477,9 +577,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EasyLocalize/Preview Content\"";
 				DEVELOPMENT_TEAM = 5HWZ52VHNS;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EasyLocalize/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = EasyLocalize;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Мы хотим получить доступ к вашим файлам для редактирования";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (

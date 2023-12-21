@@ -22,3 +22,10 @@
 "translate" = "dịch";
 "success" = "Thành công";
 "translatesAdded" = "Dịch thành công đã được thêm";
+
+"noAccess" = "Không có quyền ghi vào tệp";
+"updateError" = "Lỗi cập nhật tệp";
+"translateError" = "Lỗi khi nhận bản dịch";
+"emptyTextToTranslate" = "Không có gì để dịch";
+"emptyTextToTranslateDesc" = "Bạn chưa nhập văn bản cần dịch";
+"noAccessDesc" = "Bạn không có quyền ghi tệp \"Localizable.strings\"";

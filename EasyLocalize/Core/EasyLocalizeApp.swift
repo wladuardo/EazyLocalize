@@ -9,12 +9,14 @@ import SwiftUI
 
 @main
 struct EasyLocalizeApp: App {
+    private let purchaseService: PurchaseService = .shared
+    
     var body: some Scene {
         WindowGroup {
             MainView()
                 .onAppear(perform: customizeWindow)
                 .background {
-                    TransparentVisualEffect()
+                    TransparentVisualEffect(blendingMode: .behindWindow, material: .menu)
                         .ignoresSafeArea()
                 }
         }

@@ -22,3 +22,10 @@
 "translate" = "översätta";
 "success" = "Framgång";
 "translatesAdded" = "Översättningar har lagts till framgångsrikt";
+
+"noAccess" = "Inget tillstånd att skriva filen";
+"updateError" = "Filuppdateringsfel";
+"translateError" = "Fel vid hämtning av översättning";
+"emptyTextToTranslate" = "Inget att översätta";
+"emptyTextToTranslateDesc" = "Du har inte angett den text som ska översättas";
+"noAccessDesc" = "Du har inte behörighet att skriva filen \"Localizable.strings\"";

@@ -22,3 +22,10 @@
 "translate" = "翻訳する";
 "success" = "成功";
 "translatesAdded" = "翻訳が成功補完されました";
+
+"noAccess" = "ファイルの書き込み許可がありません";
+"updateError" = "ファイルの更新エラー";
+"translateError" = "翻訳の取得中にエラーが発生しました";
+"emptyTextToTranslate" = "翻訳するものはありません";
+"emptyTextToTranslateDesc" = "翻訳するテキストを入力していません";
+"noAccessDesc" = "\"Localizable.strings\" ファイルを書き込む権限がありません";

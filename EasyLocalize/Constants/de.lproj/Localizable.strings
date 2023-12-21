@@ -23,3 +23,10 @@
 "translate" = "Übersetzen";
 "success" = "Erfolg";
 "translatesAdded" = "Übersetzungen erfolgreich hinzugefügt";
+
+"noAccess" = "Keine Berechtigung zum Schreiben der Datei";
+"updateError" = "Aktualisierungsfehler der Datei";
+"translateError" = "Fehler beim Abrufen der Übersetzung";
+"emptyTextToTranslate" = "Nichts zu übersetzen";
+"emptyTextToTranslateDesc" = "Sie haben den zu übersetzenden Text nicht eingegeben";
+"noAccessDesc" = "Sie haben keine Berechtigung, die Datei \"Localizable.strings\" zu schreiben";

@@ -13,7 +13,6 @@ final class MainViewModel: ObservableObject {
     @Published var translatesDictionary: [String: String] = [:]
     @Published var isTranslatingInProgress: Bool = false
     @Published var saveSignal: Bool = true
-    @Published var isSaved: Bool = false
     @Published var isTranslatesAdded: Bool = false
     @Published var error: AppError?
     
@@ -81,7 +80,6 @@ final class MainViewModel: ObservableObject {
     func giveSignalToSave() {
         Task { @MainActor in
             saveSignal = true
-            isSaved = true
         }
     }
     

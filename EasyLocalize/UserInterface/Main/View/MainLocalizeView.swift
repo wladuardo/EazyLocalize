@@ -78,7 +78,7 @@ struct MainLocalizeView: View {
                     }
                     
                     Button(action: viewModel.giveSignalToSave) {
-                        if viewModel.isSaved {
+                        if viewModel.isTranslatesAdded {
                             Image(systemName: "checkmark.diamond.fill")
                                 .foregroundColor(.green)
                         } else {
@@ -98,7 +98,7 @@ struct MainLocalizeView: View {
         needToClear.toggle()
         textToTranslate.removeAll()
         keyName.removeAll()
-        viewModel.isSaved = false
+        viewModel.isTranslatesAdded = false
         error = nil
     }
     

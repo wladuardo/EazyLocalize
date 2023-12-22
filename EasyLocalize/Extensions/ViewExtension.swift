@@ -13,4 +13,8 @@ extension View {
          return clipShape(roundedRect)
               .overlay(roundedRect.strokeBorder(content, lineWidth: width))
      }
+    
+    public func animatedGradientBackground(colors: [Color], animateGradient: Bool) -> some View {
+        modifier(AnimatedGradientBackgroundModifier(colors: colors, animateGradient: animateGradient))
+    }
  }

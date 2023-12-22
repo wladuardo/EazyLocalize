@@ -23,11 +23,12 @@ struct ProductView: View {
             .padding(.leading)
             Spacer()
         }
-        .frame(width: 150, height: 70)
+        .frame(width: 250, height: 70)
         .background {
-            RoundedRectangle(cornerRadius: 20)
-                .foregroundStyle(.orange)
-                .addBorder(isSelected ? .green : .clear, width: 3, cornerRadius: 20)
+            TransparentVisualEffect(blendingMode: .withinWindow,
+                                               material: .menu)
+            .clipShape(RoundedRectangle(cornerRadius: 25))
+            .addBorder(isSelected ? .purple : .clear, width: 1, cornerRadius: 20)
         }
     }
 }

@@ -11,6 +11,7 @@ import StoreKit
 
 struct PaywallScreen: View {
     @StateObject private var viewModel: PaywallViewModel = .init()
+    @Environment (\.dismiss) private var dismiss
     
     var body: some View {
         ZStack {
@@ -26,11 +27,18 @@ struct PaywallScreen: View {
                 Spacer()
                 ForEach(viewModel.products) { product in
                     ProductView(product: product, isSelected: product == viewModel.choosedProduct)
-                        .onTapGesture { viewModel.choosedProduct = product }
+                        .onTapGesture { 
+                            withAnimation() {
+                                viewModel.choosedProduct = product
+                            }
+                        }
                 }
-                Button(action: viewModel.purchaseProduct) {
-                    Text("Buy")
-                }
+                BuyButton(text: "GET PREMIUM", action: viewModel.purchaseProduct)
+                    .padding()
+                Spacer()
+                Text("Later")
+                    .font(.system(size: 13, weight: .semibold))
+                    .onTapGesture { dismiss() }
                 Spacer()
             }
             .frame(width: 300)

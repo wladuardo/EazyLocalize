@@ -13,6 +13,7 @@ final class MainViewModel: ObservableObject {
     @Published var translatesDictionary: [String: String] = [:]
     @Published var isTranslatingInProgress: Bool = false
     @Published var saveSignal: Bool = true
+    @Published var chooseAllTranslates: Bool = true
     @Published var isTranslatesAdded: Bool = false
     @Published var error: AppError?
     
@@ -87,6 +88,10 @@ final class MainViewModel: ObservableObject {
         let languageCode = localizedFileName.components(separatedBy: ".").first ?? "en"
         let locale = Locale(identifier: languageCode)
         return locale.localizedString(forIdentifier: languageCode) ?? ""
+    }
+    
+    func needToChooseAllTranslates(_ isNeeded: Bool) {
+        chooseAllTranslates = isNeeded
     }
 }
 

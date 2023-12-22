@@ -13,4 +13,5 @@ final class Config {
     static let promtInstruction = { (textToTranslate: String) in
         return "Переведи этот текст: '\(textToTranslate)' на"
     }
+    static let buttonCornerRadius: CGFloat = 12
 }

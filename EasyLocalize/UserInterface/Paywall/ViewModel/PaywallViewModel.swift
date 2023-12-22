@@ -15,7 +15,7 @@ final class PaywallViewModel: ObservableObject {
     private let purchaseService: PurchaseService = .shared
     
     init() {
-        products = purchaseService.products
+        products = purchaseService.products.sorted(by: { $0.price < $1.price })
         choosedProduct = products.first
     }
     

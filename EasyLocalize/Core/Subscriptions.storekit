@@ -102,12 +102,7 @@
           "familyShareable" : false,
           "groupNumber" : 1,
           "internalID" : "33C886B5",
-          "introductoryOffer" : {
-            "displayPrice" : "0.99",
-            "internalID" : "D03E0A86",
-            "paymentMode" : "free",
-            "subscriptionPeriod" : "P3D"
-          },
+          "introductoryOffer" : null,
           "localizations" : [
             {
               "description" : "",

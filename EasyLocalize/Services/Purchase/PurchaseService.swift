@@ -29,17 +29,6 @@ final class PurchaseService: ObservableObject {
         _ = try await product.purchase()
     }
     
-    private func initAllProducts() {
-        Task {
-            do {
-                products = try await Product.products(for: allSubscriptions)
-                await getPurchasedProducts()
-            } catch {
-                products = []
-            }
-        }
-    }
-    
     func getPurchasedProducts() async {
         for await result in Transaction.currentEntitlements {
             guard case .verified(let transaction) = result else { continue }
@@ -56,5 +45,16 @@ final class PurchaseService: ObservableObject {
         guard let product else { return false }
         guard let subscription = product.subscription else { return false }
         return await subscription.isEligibleForIntroOffer
+    }
+    
+    private func initAllProducts() {
+        Task {
+            do {
+                products = try await Product.products(for: allSubscriptions)
+                await getPurchasedProducts()
+            } catch {
+                products = []
+            }
+        }
     }
 }

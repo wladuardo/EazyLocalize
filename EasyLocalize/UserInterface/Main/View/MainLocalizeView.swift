@@ -18,6 +18,8 @@ struct MainLocalizeView: View {
     @State private var isAlertPresented: Bool = false
     @State private var error: AppError?
     @State private var isPaywallPresented: Bool = false
+    @State private var isAllTranslatesChoosed: Bool = true
+    @State private var isOptionsPresented: Bool = false
     
     var body: some View {
         HStack {
@@ -47,25 +49,24 @@ struct MainLocalizeView: View {
             HStack {
                 TextField(String.enterTextToTranslate, text: $textToTranslate, axis: .vertical)
                     .padding()
-                Button(action: { 
-                    isPaywallPresented.toggle()
-//                    viewModel.translateText(textToTranslate)
-                }, label: {
-                    Text(String.translate)
-                        .fontWeight(.semibold)
-                })
+                MainButton(text: .translate, color: .purple) {
+                    if PurchaseService.shared.isPremiumActive {
+                        isPaywallPresented.toggle()
+                    } else {
+                        viewModel.translateText(textToTranslate)
+                    }
+                }
             }
-            .sheet(isPresented: $isPaywallPresented, content: {
-                PaywallScreen()
-            })
-            
             Spacer()
             HStack {
-                Button(String.clear, action: clearView)
-                Button(String.chooseAnotherPath, action: { projectPath = nil })
+                MainButton(text: .clear, color: .red, action: clearView)
+                MainButton(text: .chooseAnotherPath, color: .purple, action: { projectPath = nil })
+                MainButton(text: "Options", color: .purple, action: { isOptionsPresented.toggle() })
             }
             Spacer()
         }
+        .sheet(isPresented: $isOptionsPresented) { OptionsScreen() }
+        .sheet(isPresented: $isPaywallPresented) { PaywallScreen() }
     }
     
     private var rightBlock: some View {
@@ -76,29 +77,47 @@ struct MainLocalizeView: View {
             VStack {
                 ScrollView {
                     TextWithLeadingAlignment(text: .localizableFound)
-                    
+                        .padding(.bottom)
+                    chooseAllBlock
                     ForEach(viewModel.fileNames, id: \.self) { fileName in
                         TranslateBlock(fileName: fileName,
                                        viewModel: viewModel,
                                        keyName: $keyName,
                                        needToClear: $needToClear)
                     }
-                    
-                    Button(action: viewModel.giveSignalToSave) {
-                        if viewModel.isTranslatesAdded {
-                            Image(systemName: "checkmark.diamond.fill")
-                                .foregroundColor(.green)
+                    MainButton(text: viewModel.isTranslatesAdded
+                               ? "Translation added"
+                               : .addTranslation,
+                               color: .purple) {
+                        if PurchaseService.shared.isPremiumActive {
+                            viewModel.giveSignalToSave()
+                        } else if KeychainService.getIsFreeTranslatesAvailable() {
+                            viewModel.giveSignalToSave()
+                            KeychainService.updateFreeTracksCount(with: 1, isAdding: false)
                         } else {
-                            Text(String.addTranslation)
-                                .fontWeight(.semibold)
+                            isPaywallPresented.toggle()
                         }
                     }
+                               .padding()
                 }
                 .scrollIndicators(.hidden)
                 .scrollDisabled(viewModel.isTranslatingInProgress)
             }
             .blur(radius: viewModel.isTranslatingInProgress ? 5 : 0)
         }
+    }
+    
+    private var chooseAllBlock: some View {
+        return HStack {
+            Text("Choose all")
+                .font(.system(size: 14, weight: .medium))
+            Spacer()
+            Toggle(isOn: $isAllTranslatesChoosed) {}
+        }
+        .onChange(of: isAllTranslatesChoosed) { value in
+            viewModel.needToChooseAllTranslates(value)
+        }
+        .padding()
     }
     
     private func clearView() {
@@ -115,4 +134,8 @@ struct MainLocalizeView: View {
         viewModel.error = nil
         isAlertPresented.toggle()
     }
+}
+
+#Preview {
+    MainLocalizeView(viewModel: .init(), projectPath: .constant(nil))
 }

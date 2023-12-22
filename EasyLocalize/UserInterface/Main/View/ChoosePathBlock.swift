@@ -14,11 +14,14 @@ struct ChoosePathBlock: View {
         VStack(spacing: 20) {
             Text(String.choosePath)
                 .font(.system(size: 25, weight: .bold))
-            Button(action: { action() },
-                   label: {
-                Text(String.choose.capitalized)
-                    .fontWeight(.semibold)
-            })
+            MainButton(text: .choose.capitalized,
+                       color: .purple,
+                       action: action)
         }
+        .padding()
     }
+}
+
+#Preview {
+    ChoosePathBlock {}
 }

@@ -20,6 +20,7 @@ struct TranslateBlock: View {
         VStack {
             HStack {
                 Text(viewModel.getFullLanguageName(from: fileName).capitalized)
+                    .font(.system(size: 14, weight: .medium))
                 Spacer()
             }
             HStack {
@@ -28,6 +29,9 @@ struct TranslateBlock: View {
             }
         }
         .padding()
+        .onReceive(viewModel.$chooseAllTranslates) { value in
+            isNeededToSave = value
+        }
         .onReceive(viewModel.$saveSignal) { saveSignal in
             guard isNeededToSave else { return }
             guard !translate.isEmpty else { return }
@@ -47,4 +51,11 @@ struct TranslateBlock: View {
             needToClear.toggle()
         }
     }
+}
+
+#Preview {
+    TranslateBlock(fileName: .addTranslation,
+                   viewModel: .init(),
+                   keyName: .constant("Hello"),
+                   needToClear: .constant(false))
 }

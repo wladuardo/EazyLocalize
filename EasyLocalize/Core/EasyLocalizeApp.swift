@@ -19,6 +19,10 @@ struct EasyLocalizeApp: App {
                     TransparentVisualEffect(blendingMode: .behindWindow, material: .menu)
                         .ignoresSafeArea()
                 }
+                .task(priority: .background) {
+                    KeychainService.setupIsFirstLaunch()
+                    KeychainService.setupFreeTranslates()
+                }
         }
         .windowResizability(.contentSize)
         .defaultPosition(.center)

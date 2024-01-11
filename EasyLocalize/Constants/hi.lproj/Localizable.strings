@@ -29,3 +29,9 @@
 "emptyTextToTranslate" = "अनुवाद करने के लिए कुछ नहीं";
 "emptyTextToTranslateDesc" = "आपने उस पाठ को दर्ज नहीं किया है जो अनुवाद करना है";
 "noAccessDesc" = "आपको फ़ाइल \"Localizable.strings\" लिखने की अनुमति नहीं है";
+
+"chooseAll" = "सभी चुनें";
+"options" = "विकल्प";
+"privacyPolicy" = "गोपनीयता नीति";
+"termsOfUse" = "उपयोग की शर्तें";
+"contactSupport" = "समर्थन से संपर्क करें";

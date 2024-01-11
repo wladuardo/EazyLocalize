@@ -27,4 +27,11 @@ extension String {
     static let emptyTextToTranslate = NSLocalizedString("emptyTextToTranslate", comment: "")
     static let emptyTextToTranslateDesc = NSLocalizedString("emptyTextToTranslateDesc", comment: "")
     static let noAccessDesc = NSLocalizedString("noAccessDesc", comment: "")
+    static let chooseAll = NSLocalizedString("chooseAll", comment: "")
+    static let options = NSLocalizedString("options", comment: "")
+    static let privacyPolicy = NSLocalizedString("privacyPolicy", comment: "")
+    static let termsOfUse = NSLocalizedString("termsOfUse", comment: "")
+    static let contactSupport = NSLocalizedString("contactSupport", comment: "")
+    static let privacyPolicyDesc = NSLocalizedString("privacyPolicyDesc", comment: "")
+    static let termsOfUseDesc = NSLocalizedString("termsOfUseDesc", comment: "")
 }

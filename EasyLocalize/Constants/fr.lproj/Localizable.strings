@@ -29,3 +29,9 @@
 "emptyTextToTranslate" = "Rien à traduire";
 "emptyTextToTranslateDesc" = "Vous n'avez pas saisi le texte à traduire";
 "noAccessDesc" = "Vous n'avez pas la permission d'écrire le fichier \"Localizable.strings\"";
+
+"chooseAll" = "Choisissez tout";
+"options" = "Options";
+"privacyPolicy" = "Politique de confidentialité";
+"termsOfUse" = "Conditions d'utilisation";
+"contactSupport" = "Contacter le support";

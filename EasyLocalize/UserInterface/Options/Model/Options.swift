@@ -20,11 +20,22 @@ enum Options: CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .privacyPolicy:
-            return "Privacy policy"
+            return .privacyPolicy
         case .termsOfUse:
-            return "Terms of use"
+            return .termsOfUse
         case .contact:
-            return "Contact support"
+            return .contactSupport
+        }
+    }
+    
+    var description: String? {
+        switch self {
+        case .privacyPolicy:
+            return .privacyPolicyDesc
+        case .termsOfUse:
+            return .termsOfUseDesc
+        case .contact:
+            return nil
         }
     }
     

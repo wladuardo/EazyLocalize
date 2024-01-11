@@ -35,6 +35,8 @@
 		86C0A65A2AB4464700F91FCC /* MainLocalizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0A6592AB4464700F91FCC /* MainLocalizeView.swift */; };
 		86C0A65C2AB4477C00F91FCC /* ChoosePathBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0A65B2AB4477C00F91FCC /* ChoosePathBlock.swift */; };
 		86C0A65E2AB4479100F91FCC /* TextWithLeadingAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0A65D2AB4479100F91FCC /* TextWithLeadingAlignment.swift */; };
+		86C649DF2B5008BB00E12605 /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C649DE2B5008BB00E12605 /* OptionCell.swift */; };
+		86C649E12B50164400E12605 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C649E02B50164400E12605 /* TextView.swift */; };
 		86EA07262B3426E90050F41C /* PaywallScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA07252B3426E90050F41C /* PaywallScreen.swift */; };
 		86EA072A2B34296F0050F41C /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA07292B34296F0050F41C /* PurchaseService.swift */; };
 		86EA07302B3442A10050F41C /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA072F2B3442A10050F41C /* ViewExtension.swift */; };
@@ -81,6 +83,8 @@
 		86C0A6592AB4464700F91FCC /* MainLocalizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLocalizeView.swift; sourceTree = "<group>"; };
 		86C0A65B2AB4477C00F91FCC /* ChoosePathBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePathBlock.swift; sourceTree = "<group>"; };
 		86C0A65D2AB4479100F91FCC /* TextWithLeadingAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWithLeadingAlignment.swift; sourceTree = "<group>"; };
+		86C649DE2B5008BB00E12605 /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
+		86C649E02B50164400E12605 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		86EA07252B3426E90050F41C /* PaywallScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallScreen.swift; sourceTree = "<group>"; };
 		86EA07292B34296F0050F41C /* PurchaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
 		86EA072B2B34336F0050F41C /* Subscriptions.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Subscriptions.storekit; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 		863670722B35BAF200D04CA9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				86C649DE2B5008BB00E12605 /* OptionCell.swift */,
+				86C649E02B50164400E12605 /* TextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -451,6 +457,7 @@
 				86EA07322B3447B10050F41C /* PaywallViewModel.swift in Sources */,
 				86EA07262B3426E90050F41C /* PaywallScreen.swift in Sources */,
 				863670662B359B7500D04CA9 /* KeychainService.swift in Sources */,
+				86C649E12B50164400E12605 /* TextView.swift in Sources */,
 				86C0A65E2AB4479100F91FCC /* TextWithLeadingAlignment.swift in Sources */,
 				869CEE2A2AB24E7C00C84FE7 /* Config.swift in Sources */,
 				8644D0CD2AD94D8A00066D49 /* AppError.swift in Sources */,
@@ -461,6 +468,7 @@
 				8636706F2B35BAE500D04CA9 /* OptionsViewModel.swift in Sources */,
 				86EA072A2B34296F0050F41C /* PurchaseService.swift in Sources */,
 				86C0A65C2AB4477C00F91FCC /* ChoosePathBlock.swift in Sources */,
+				86C649DF2B5008BB00E12605 /* OptionCell.swift in Sources */,
 				8635F0EE2AA5256A00418EA0 /* MainViewModel.swift in Sources */,
 				863670762B35C1DC00D04CA9 /* Options.swift in Sources */,
 				866DFD032AB2F49900362D43 /* LocalizedStrings.swift in Sources */,

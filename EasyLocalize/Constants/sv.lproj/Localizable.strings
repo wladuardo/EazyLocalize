@@ -29,3 +29,9 @@
 "emptyTextToTranslate" = "Inget att översätta";
 "emptyTextToTranslateDesc" = "Du har inte angett den text som ska översättas";
 "noAccessDesc" = "Du har inte behörighet att skriva filen \"Localizable.strings\"";
+
+"chooseAll" = "Välj alla";
+"options" = "Alternativ";
+"privacyPolicy" = "Integritetspolicy";
+"termsOfUse" = "Användarvillkor";
+"contactSupport" = "Kontakta support";

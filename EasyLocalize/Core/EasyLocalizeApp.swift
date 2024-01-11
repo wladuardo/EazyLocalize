@@ -22,6 +22,7 @@ struct EasyLocalizeApp: App {
                 .task(priority: .background) {
                     KeychainService.setupIsFirstLaunch()
                     KeychainService.setupFreeTranslates()
+                    KeychainService.setupFreeGPTUsage()
                 }
         }
         .windowResizability(.contentSize)

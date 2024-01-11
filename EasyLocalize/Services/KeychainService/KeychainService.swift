@@ -10,6 +10,7 @@ import Security
 
 final class KeychainService {
     static private let translatesCoundID = "translatesCoundID"
+    static private let gptUsagesCountID = "gptUsagesCountID"
     static private let isFirstLaunchID = "isFirstLaunchID"
     
     @discardableResult
@@ -58,8 +59,16 @@ final class KeychainService {
 
 // MARK: Free translates methods
 extension KeychainService {
-    static func updateFreeTracksCount(with count: Int, isAdding: Bool) {
-        let resultData = load(key: translatesCoundID)
+    static func updateFreeCount(for type: PaidProductType, with count: Int, isAdding: Bool) {
+        let resultData: Data?
+        
+        switch type {
+        case .gptUsage:
+            resultData = load(key: gptUsagesCountID)
+        case .addingTranslation:
+            resultData = load(key: translatesCoundID)
+        }
+        
         let result = resultData?.to(type: Int.self)
         guard var result else { return }
         
@@ -69,14 +78,29 @@ extension KeychainService {
             result -= count
         }
         
-        save(key: translatesCoundID,
-             data: Data(value: result))
+        switch type {
+        case .gptUsage:
+            save(key: gptUsagesCountID,
+                 data: Data(value: result))
+        case .addingTranslation:
+            save(key: translatesCoundID,
+                 data: Data(value: result))
+        }
     }
     
-    static func getIsFreeTranslatesAvailable() -> Bool {
-        let resultData = load(key: translatesCoundID)
+    static func getIsFreeAvailable(for type: PaidProductType) -> Bool {
+        let resultData: Data?
+        
+        switch type {
+        case .gptUsage:
+            resultData = load(key: gptUsagesCountID)
+        case .addingTranslation:
+            resultData = load(key: translatesCoundID)
+        }
+        
         let result = resultData?.to(type: Int.self)
         guard let result else { return false }
+        
         if result > 0 {
             return true
         } else {
@@ -90,9 +114,20 @@ extension KeychainService {
         
         guard let isFirstLaunch,
               isFirstLaunch else { return }
-        let freeTracks = Data(value: 5)
+        let freeTranslates = Data(value: 5)
         save(key: translatesCoundID,
-             data: freeTracks)
+             data: freeTranslates)
+    }
+    
+    static func setupFreeGPTUsage() {
+        let isFirstLaunchData = load(key: isFirstLaunchID)
+        let isFirstLaunch = isFirstLaunchData?.to(type: Bool.self)
+        
+        guard let isFirstLaunch,
+              isFirstLaunch else { return }
+        let freeGPTUsages = Data(value: 5)
+        save(key: gptUsagesCountID,
+             data: freeGPTUsages)
     }
     
     static func setupIsFirstLaunch() {
@@ -103,5 +138,12 @@ extension KeychainService {
             save(key: isFirstLaunchID,
                  data: Data(value: true))
         }
+    }
+}
+
+extension KeychainService {
+    enum PaidProductType {
+        case gptUsage
+        case addingTranslation
     }
 }

@@ -30,3 +30,9 @@
 "emptyTextToTranslate" = "Nichts zu übersetzen";
 "emptyTextToTranslateDesc" = "Sie haben den zu übersetzenden Text nicht eingegeben";
 "noAccessDesc" = "Sie haben keine Berechtigung, die Datei \"Localizable.strings\" zu schreiben";
+
+"chooseAll" = "Wähle alles";
+"options" = "Optionen";
+"privacyPolicy" = "Datenschutzerklärung";
+"termsOfUse" = "Nutzungsbedingungen";
+"contactSupport" = "Kontaktieren Sie den Support";

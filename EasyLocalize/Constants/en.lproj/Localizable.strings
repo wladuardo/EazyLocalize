@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
-  EasyLocalize
-
-  Created by Владислав Ковальский on 14.09.2023.
-  
-*/
+/*
+ Localizable.strings
+ EasyLocalize
+ 
+ Created by Владислав Ковальский on 14.09.2023.
+ 
+ */
 
 "addTranslation" = "Add translation";
 "choosePath" = "Choose the path to your Xcode project";
@@ -29,3 +29,9 @@
 "emptyTextToTranslate" = "Nothing to translate";
 "emptyTextToTranslateDesc" = "You did not enter the text to translate";
 "noAccessDesc" = "You do not have permission to write the file \"Localizable.strings\"";
+
+"chooseAll" = "Choose all";
+"options" = "Options";
+"privacyPolicy" = "Privacy policy";
+"termsOfUse" = "Terms of use";
+"contactSupport" = "Contact support";

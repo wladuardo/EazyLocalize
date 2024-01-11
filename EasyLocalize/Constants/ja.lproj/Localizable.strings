@@ -29,3 +29,9 @@
 "emptyTextToTranslate" = "翻訳するものはありません";
 "emptyTextToTranslateDesc" = "翻訳するテキストを入力していません";
 "noAccessDesc" = "\"Localizable.strings\" ファイルを書き込む権限がありません";
+
+"chooseAll" = "すべて選択";
+"options" = "オプション";
+"privacyPolicy" = "プライバシーポリシー";
+"termsOfUse" = "利用規約";
+"contactSupport" = "サポートに連絡";

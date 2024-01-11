@@ -29,3 +29,9 @@
 "emptyTextToTranslate" = "没什么可翻译的";
 "emptyTextToTranslateDesc" = "您没有输入需要翻译的文本";
 "noAccessDesc" = "您没有写入 \"Localizable.strings\" 文件的权限";
+
+"chooseAll" = "选择所有";
+"options" = "选项";
+"privacyPolicy" = "隐私政策";
+"termsOfUse" = "使用条款";
+"contactSupport" = "联系支持";

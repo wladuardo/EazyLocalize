@@ -51,17 +51,28 @@ struct MainLocalizeView: View {
                     .padding()
                 MainButton(text: .translate, color: .purple) {
                     if PurchaseService.shared.isPremiumActive {
-                        isPaywallPresented.toggle()
-                    } else {
                         viewModel.translateText(textToTranslate)
+                    } else if KeychainService.getIsFreeAvailable(for: .gptUsage) {
+                        viewModel.translateText(textToTranslate)
+                        KeychainService.updateFreeCount(for: .gptUsage,
+                                                        with: 1,
+                                                        isAdding: false)
+                    } else {
+                        isPaywallPresented.toggle()
                     }
                 }
             }
             Spacer()
             HStack {
-                MainButton(text: .clear, color: .red, action: clearView)
-                MainButton(text: .chooseAnotherPath, color: .purple, action: { projectPath = nil })
-                MainButton(text: "Options", color: .purple, action: { isOptionsPresented.toggle() })
+                MainButton(text: .clear,
+                           color: .red,
+                           action: clearView)
+                MainButton(text: .chooseAnotherPath,
+                           color: .purple,
+                           action: { projectPath = nil })
+                MainButton(text: .options,
+                           color: .purple,
+                           action: { isOptionsPresented.toggle() })
             }
             Spacer()
         }
@@ -91,9 +102,11 @@ struct MainLocalizeView: View {
                                color: .purple) {
                         if PurchaseService.shared.isPremiumActive {
                             viewModel.giveSignalToSave()
-                        } else if KeychainService.getIsFreeTranslatesAvailable() {
+                        } else if KeychainService.getIsFreeAvailable(for: .addingTranslation) {
                             viewModel.giveSignalToSave()
-                            KeychainService.updateFreeTracksCount(with: 1, isAdding: false)
+                            KeychainService.updateFreeCount(for: .addingTranslation,
+                                                            with: 1,
+                                                            isAdding: false)
                         } else {
                             isPaywallPresented.toggle()
                         }
@@ -109,7 +122,7 @@ struct MainLocalizeView: View {
     
     private var chooseAllBlock: some View {
         return HStack {
-            Text("Choose all")
+            Text(String.chooseAll)
                 .font(.system(size: 14, weight: .medium))
             Spacer()
             Toggle(isOn: $isAllTranslatesChoosed) {}

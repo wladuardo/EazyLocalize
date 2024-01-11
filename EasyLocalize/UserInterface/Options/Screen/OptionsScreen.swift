@@ -9,66 +9,50 @@ import SwiftUI
 
 struct OptionsScreen: View {
     @StateObject private var viewModel: OptionsViewModel = .init()
-    @State private var allOptions = Options.allCases
     @Environment (\.dismiss) private var dismiss
     
+    @State private var allOptions = Options.allCases
+    @State private var isTextViewPresented: Bool = false
+    
     var body: some View {
-        VStack {
-            HStack {
-                Text("Options")
-                    .font(.system(size: 25, weight: .bold))
-                Spacer()
-                Button(action: dismiss.callAsFunction) {
-                    Image(systemName: "xmark.circle.fill")
-                        .resizable()
-                        .frame(width: 20, height: 20)
+        ZStack {
+            if viewModel.isLoading { ProgressView() }
+            VStack {
+                HStack {
+                    Text(String.options)
+                        .font(.system(size: 25, weight: .bold))
+                    Spacer()
+                    Button(action: dismiss.callAsFunction) {
+                        Image(systemName: "xmark.circle.fill")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                    }
+                    .buttonStyle(.borderless)
                 }
-                .buttonStyle(.borderless)
+                .padding(.horizontal)
+                .padding(.bottom, 25)
+                
+                ForEach(allOptions) { option in
+                    OptionCell(option: option) { action(by: option) }
+                }
             }
-            .padding(.horizontal)
-            .padding(.bottom, 25)
-            ForEach(allOptions) { option in
-                OptionCell(option: option) { action(by: option) }
+            .padding()
+            .blur(radius: viewModel.isLoading ? 5 : 0)
+            .frame(width: 360)
+        }
+        .sheet(isPresented: $isTextViewPresented) {
+            if let selectedOption = viewModel.selectedOption {
+                TextView(type: selectedOption)
             }
         }
-        .padding()
-        .frame(width: 300)
+        .onReceive(viewModel.$selectedOption) { option in
+            guard let option else { return }
+            isTextViewPresented.toggle()
+        }
     }
     
     private func action(by options: Options) {
-        switch options {
-        case .privacyPolicy:
-            break
-        case .termsOfUse:
-            break
-        case .contact:
-            let sharingService = NSSharingService(named: .composeEmail)
-            sharingService?.recipients = ["kovalskyvk@icloud.com"]
-            sharingService?.subject = "EasyLocalize"
-            sharingService?.perform(withItems: [])
-        }
-    }
-}
-
-struct OptionCell: View {
-    let option: Options
-    let action: () -> Void
-    
-    var body: some View {
-        RoundedRectangle(cornerRadius: 20)
-            .foregroundStyle(.purple)
-            .overlay {
-                HStack {
-                    option.image
-                    Text(option.title)
-                    Spacer()
-                }
-                .padding()
-            }
-            .frame(height: 40)
-            .onTapGesture { action() }
-            .listRowSeparator(.hidden)
-            .padding(5)
+        viewModel.buttonAction(options)
     }
 }
 

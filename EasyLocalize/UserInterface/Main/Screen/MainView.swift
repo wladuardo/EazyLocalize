@@ -22,6 +22,7 @@ struct MainView: View {
                 .padding()
             } else {
                 ChoosePathBlock() {
+                    AnalyticsService.sendEvent(.choosePath)
                     projectPath = viewModel.selectProjectPath()
                 }
                 .frame(width: 600, height: 200)

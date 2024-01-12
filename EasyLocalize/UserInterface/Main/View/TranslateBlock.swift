@@ -29,6 +29,9 @@ struct TranslateBlock: View {
             }
         }
         .padding()
+        .onAppear {
+            viewModel.setChoosedLanguage(isNeeded: isNeededToSave, fileName: fileName)
+        }
         .onReceive(viewModel.$chooseAllTranslates) { value in
             isNeededToSave = value
         }
@@ -49,6 +52,9 @@ struct TranslateBlock: View {
             guard isNeeded else { return }
             translate.removeAll()
             needToClear.toggle()
+        }
+        .onChange(of: isNeededToSave) { isNeeded in
+            viewModel.setChoosedLanguage(isNeeded: isNeeded, fileName: fileName)
         }
     }
 }

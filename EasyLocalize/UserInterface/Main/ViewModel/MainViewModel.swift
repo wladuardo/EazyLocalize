@@ -17,6 +17,7 @@ final class MainViewModel: ObservableObject {
     @Published var isTranslatesAdded: Bool = false
     @Published var error: AppError?
     
+    private var choosedLanguagesToTranslate: [String] = []
     private var localizableStringPaths: [URL] = []
     private let networkingService: NetworkingService = .shared
     
@@ -49,6 +50,7 @@ final class MainViewModel: ObservableObject {
                     }
                     
                     try existingKeyValuePairs.write(to: localizableStringPath, atomically: true, encoding: .utf8)
+                    AnalyticsService.sendEvent(.translateAdded)
                     isTranslatesAdded = true
                 }
             } catch {
@@ -64,8 +66,9 @@ final class MainViewModel: ObservableObject {
                     showError(.emptyTextToTranslate)
                     return
                 }
+                AnalyticsService.sendEvent(.gptRequest)
                 await MainActor.run { isTranslatingInProgress = true }
-                let languageNames = fileNames.map { $0.replacingOccurrences(of: ".lproj", with: "") }
+                let languageNames = choosedLanguagesToTranslate.map { $0.replacingOccurrences(of: ".lproj", with: "") }
                 let translates = try await networkingService.sendRequest(with: textToTranslate, targetLanguages: languageNames)
                 await MainActor.run {
                     isTranslatingInProgress = false
@@ -92,6 +95,15 @@ final class MainViewModel: ObservableObject {
     
     func needToChooseAllTranslates(_ isNeeded: Bool) {
         chooseAllTranslates = isNeeded
+    }
+    
+    func setChoosedLanguage(isNeeded: Bool, fileName: String) {
+        if isNeeded {
+            guard !choosedLanguagesToTranslate.contains(where: { $0 == fileName }) else { return }
+            choosedLanguagesToTranslate.append(fileName)
+        } else {
+            choosedLanguagesToTranslate.removeAll { $0 == fileName }
+        }
     }
 }
 

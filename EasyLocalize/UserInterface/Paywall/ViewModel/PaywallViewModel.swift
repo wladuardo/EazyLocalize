@@ -15,13 +15,15 @@ final class PaywallViewModel: ObservableObject {
     private let purchaseService: PurchaseService = .shared
     
     init() {
+        AnalyticsService.sendEvent(.paywallOpened)
         products = purchaseService.products.sorted(by: { $0.price < $1.price })
         choosedProduct = products.first
     }
     
     func purchaseProduct() {
         Task {
-           try await purchaseService.purchase(choosedProduct)
+            AnalyticsService.sendEvent(.buyButtonTapped)
+            try await purchaseService.purchase(choosedProduct)
         }
     }
 }

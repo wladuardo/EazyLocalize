@@ -65,14 +65,22 @@ struct MainLocalizeView: View {
             Spacer()
             HStack {
                 MainButton(text: .clear,
-                           color: .red,
-                           action: clearView)
+                           color: .red) {
+                    AnalyticsService.sendEvent(.clearTapped)
+                    clearView()
+                }
+                
                 MainButton(text: .chooseAnotherPath,
-                           color: .purple,
-                           action: { projectPath = nil })
+                           color: .purple) {
+                    AnalyticsService.sendEvent(.newPathTapped)
+                    projectPath = nil
+                }
+                
                 MainButton(text: .options,
-                           color: .purple,
-                           action: { isOptionsPresented.toggle() })
+                           color: .purple) {
+                    AnalyticsService.sendEvent(.optionsTapped)
+                    isOptionsPresented.toggle()
+                }
             }
             Spacer()
         }

@@ -59,6 +59,14 @@ final class KeychainService {
 
 // MARK: Free translates methods
 extension KeychainService {
+    static func setup() {
+        DispatchQueue.global().async {
+            setupIsFirstLaunch()
+            setupFreeTranslates()
+            setupFreeGPTUsage()
+        }
+    }
+    
     static func updateFreeCount(for type: PaidProductType, with count: Int, isAdding: Bool) {
         let resultData: Data?
         

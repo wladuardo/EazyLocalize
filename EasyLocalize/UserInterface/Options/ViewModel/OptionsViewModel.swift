@@ -30,7 +30,7 @@ final class OptionsViewModel: NSObject, ObservableObject {
     }
     
     func contactSupportAction() {
-        sharingService?.recipients = ["kovalskyvk@icloud.com"]
+        sharingService?.recipients = [Config.supportMail]
         sharingService?.subject = "EasyLocalize"
         sharingService?.perform(withItems: [])
     }

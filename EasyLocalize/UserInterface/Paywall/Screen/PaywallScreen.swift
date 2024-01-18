@@ -20,7 +20,7 @@ struct PaywallScreen: View {
                                     material: .hudWindow)
             VStack {
                 Spacer()
-                Text("Unlock all premium features")
+                Text(String.offerTitle)
                     .font(.system(size: 25, weight: .black))
                     .multilineTextAlignment(.center)
                 FeatureView()
@@ -33,10 +33,11 @@ struct PaywallScreen: View {
                             }
                         }
                 }
-                BuyButton(text: "GET PREMIUM", action: viewModel.purchaseProduct)
+                BuyButton(text: .getPremium,
+                          action: viewModel.purchaseProduct)
                     .padding()
                 Spacer()
-                Text("Later")
+                Text(String.later)
                     .font(.system(size: 13, weight: .semibold))
                     .onTapGesture { dismiss() }
                 Spacer()

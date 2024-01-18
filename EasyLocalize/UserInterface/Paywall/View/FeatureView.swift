@@ -11,7 +11,7 @@ struct FeatureView: View {
     private var features = Features.allCases
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             ForEach(features, id: \.title) { feature in
                 HStack {
                     Image(systemName: "checkmark")

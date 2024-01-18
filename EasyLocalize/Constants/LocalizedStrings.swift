@@ -34,4 +34,9 @@ extension String {
     static let contactSupport = NSLocalizedString("contactSupport", comment: "")
     static let privacyPolicyDesc = NSLocalizedString("privacyPolicyDesc", comment: "")
     static let termsOfUseDesc = NSLocalizedString("termsOfUseDesc", comment: "")
+    static let offerTitle = NSLocalizedString("offerTitle", comment: "")
+    static let getPremium = NSLocalizedString("getPremium", comment: "")
+    static let later = NSLocalizedString("later", comment: "")
+    static let unlimitedTranslates = NSLocalizedString("unlimitedTranslates", comment: "")
+    static let freeGptUsage = NSLocalizedString("freeGptUsage", comment: "")
 }

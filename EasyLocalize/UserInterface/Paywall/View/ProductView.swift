@@ -18,17 +18,22 @@ struct ProductView: View {
                 Text(product.displayName)
                     .font(.system(size: 18, weight: .bold))
                 Text(product.displayPrice)
-                    .font(.system(size: 24, weight: .bold))
+                    .font(.system(size: 13, weight: .semibold))
             }
-            .padding(.leading)
+            .padding()
             Spacer()
         }
-        .frame(width: 250, height: 70)
+        .frame(width: 250, height: 50)
+        .padding(5)
         .background {
             TransparentVisualEffect(blendingMode: .withinWindow,
-                                               material: .menu)
-            .clipShape(RoundedRectangle(cornerRadius: 25))
-            .addBorder(isSelected ? .purple : .clear, width: 1, cornerRadius: 20)
+                                    material: .fullScreenUI)
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .addBorder(isSelected
+                       ? .purple
+                       : .clear,
+                       width: 1,
+                       cornerRadius: 20)
         }
     }
 }

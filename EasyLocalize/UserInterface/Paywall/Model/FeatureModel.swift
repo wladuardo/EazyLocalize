@@ -14,9 +14,9 @@ enum Features: CaseIterable {
     var title: String {
         switch self {
         case .unlimitedTranslates:
-            return "Unlimited amount of translates"
+            return .unlimitedTranslates
         case .chatGPT:
-            return "Use ChatGPT for fast translate"
+            return .freeGptUsage
         }
     }
 }

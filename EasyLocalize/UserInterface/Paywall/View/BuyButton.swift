@@ -20,12 +20,12 @@ struct BuyButton: View {
                                         animateGradient: animateGradient)
             .overlay {
                 Text(text)
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 17, weight: .bold))
             }
             .clipShape(RoundedRectangle(cornerRadius: 25))
             .scaleEffect(.init(width: animateScale ? 1.05 : 1,
                                height: animateScale ? 1.05 : 1))
-            .frame(width: 250, height: 50)
+            .frame(width: 250, height: 40)
             .onAppear {
                 withAnimation(.bouncy(duration: 3).repeatForever()) {
                     animateGradient.toggle()

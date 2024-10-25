@@ -8,23 +8,29 @@
 import Foundation
 import AppKit
 
-class MainViewModel: ObservableObject {
+final class MainViewModel: ObservableObject {
     @Published var fileNames: [String] = []
     @Published var translatesDictionary: [String: String] = [:]
+    @Published var isTranslatingInProgress: Bool = false
+    @Published var saveSignal: Bool = true
+    @Published var chooseAllTranslates: Bool = true
+    @Published var isTranslatesAdded: Bool = false
+    @Published var error: AppError?
     
+    private var choosedLanguagesToTranslate: [String] = []
     private var localizableStringPaths: [URL] = []
     private let networkingService: NetworkingService = .shared
     
     func selectProjectPath() -> URL? {
         let dialog = NSOpenPanel()
-        dialog.title = "Выберите Xcode проект"
+        dialog.title = String.choosePath
         dialog.canChooseFiles = false
         dialog.canChooseDirectories = true
         dialog.allowsMultipleSelection = false
         
         guard dialog.runModal() == NSApplication.ModalResponse.OK else { return nil }
         guard let url = dialog.url else { return nil }
-        localizableStringPaths = localizableStringsPaths(in: url)
+        localizableStringPaths = getLocalizableStringsPaths(in: url)
         getFileNames()
         return dialog.url
     }
@@ -39,31 +45,70 @@ class MainViewModel: ObservableObject {
                     existingKeyValuePairs.append("\n\(newKeyValuePair)")
                     
                     guard FileManager.default.isWritableFile(atPath: localizableStringPath.path) else {
-                        print("У вас нет разрешения на запись файла \"Localizable.strings\" в папке \(fileName)")
+                        showError(.noAccess)
                         return
                     }
                     
                     try existingKeyValuePairs.write(to: localizableStringPath, atomically: true, encoding: .utf8)
+                    AnalyticsService.sendEvent(.translateAdded)
+                    isTranslatesAdded = true
                 }
             } catch {
-                print("Ошибка при обновлении файла: \(error.localizedDescription)")
+                showError(.updateError(description: error.localizedDescription))
             }
         }
     }
     
     func translateText(_ textToTranslate: String) {
         Task {
-            guard !textToTranslate.isEmpty
-                && textToTranslate.count > 1 else { return }
-            let languageNames = fileNames.map { $0.replacingOccurrences(of: ".lproj", with: "") }
-            let translates = try await networkingService.sendRequest(with: textToTranslate, targetLanguages: languageNames)
-            await MainActor.run {
-                translatesDictionary = translates
+            do {
+                guard !textToTranslate.isEmpty && textToTranslate.count > 1 else {
+                    showError(.emptyTextToTranslate)
+                    return
+                }
+                AnalyticsService.sendEvent(.gptRequest)
+                await MainActor.run { isTranslatingInProgress = true }
+                let languageNames = choosedLanguagesToTranslate.map { $0.replacingOccurrences(of: ".lproj", with: "") }
+                let translates = try await networkingService.sendRequest(with: textToTranslate, targetLanguages: languageNames)
+                await MainActor.run {
+                    isTranslatingInProgress = false
+                    translatesDictionary = translates
+                }
+            } catch {
+                await MainActor.run { isTranslatingInProgress = false }
+                showError(.translateError(description: error.localizedDescription))
             }
         }
     }
     
-    private func localizableStringsPaths(in projectPath: URL) -> [URL] {
+    func giveSignalToSave() {
+        Task { @MainActor in
+            saveSignal = true
+        }
+    }
+    
+    func getFullLanguageName(from localizedFileName: String) -> String {
+        let languageCode = localizedFileName.components(separatedBy: ".").first ?? "en"
+        let locale = Locale(identifier: languageCode)
+        return locale.localizedString(forIdentifier: languageCode) ?? ""
+    }
+    
+    func needToChooseAllTranslates(_ isNeeded: Bool) {
+        chooseAllTranslates = isNeeded
+    }
+    
+    func setChoosedLanguage(isNeeded: Bool, fileName: String) {
+        if isNeeded {
+            guard !choosedLanguagesToTranslate.contains(where: { $0 == fileName }) else { return }
+            choosedLanguagesToTranslate.append(fileName)
+        } else {
+            choosedLanguagesToTranslate.removeAll { $0 == fileName }
+        }
+    }
+}
+
+private extension MainViewModel {
+    func getLocalizableStringsPaths(in projectPath: URL) -> [URL] {
         let fileManager = FileManager.default
         let enumerator = fileManager.enumerator(at: projectPath, includingPropertiesForKeys: nil)
         var localizableStringsPaths: [URL] = []
@@ -77,7 +122,7 @@ class MainViewModel: ObservableObject {
         return localizableStringsPaths
     }
     
-    private func getFileNames() {
+    func getFileNames() {
         guard !localizableStringPaths.isEmpty else { return }
         localizableStringPaths.forEach({ url in
             if let decodedURLString = url.absoluteString.removingPercentEncoding {
@@ -88,5 +133,11 @@ class MainViewModel: ObservableObject {
                 }
             }
         })
+    }
+    
+    func showError(_ error: AppError) {
+        Task { @MainActor in
+            self.error = error
+        }
     }
 }

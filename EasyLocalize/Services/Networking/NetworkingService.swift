@@ -8,6 +8,11 @@
 import Foundation
 import Networking
 
+enum JsonDecodingError: Error {
+    case invalidData
+    case decodingFailure
+}
+
 final class NetworkingService {
     static let shared: NetworkingService = .init()
     
@@ -18,20 +23,22 @@ final class NetworkingService {
     }
     
     public func sendRequest(with textToTranslate: String, targetLanguages: [String]) async throws -> [String: String] {
-        let model: SendMessageModel = .init(role: .user, content: getPromt(with: textToTranslate, targetLanguages: targetLanguages))
+        let model: SendMessageModel = .init(role: .user,
+                                            chatModel: .chatGPT3Turbo,
+                                            content: getPromt(with: textToTranslate, targetLanguages: targetLanguages))
         let requestModel: ChatGPTSendRequest = .init(model: model)
-        let result = await networkService.chatGPTAPI.sendMessage(params: requestModel)
         
-        switch result {
-        case .success(let success):
-            let result: [String]? = success.choices?.compactMap { return $0.message.content }
-            guard let stringResult = result?.first else {
+        do {
+            let result = try await networkService.chatGPTAPI.sendMessage(params: requestModel)
+            let choices: [String]? = result.choices?.compactMap { return $0.message.content }
+            
+            guard let stringResult = choices?.first else {
                 throw NSError(domain: "Response is nil", code: 0)
             }
             
             return try decodeJsonString(stringResult)
-        case .failure(let failure):
-            throw failure
+        } catch {
+            throw error
         }
     }
     
@@ -44,18 +51,14 @@ final class NetworkingService {
     }
     
     private func decodeJsonString(_ jsonString: String) throws -> [String: String] {
-        if let jsonData = jsonString.data(using: .utf8) {
-            do {
-                if let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: String] {
-                    return jsonObject
-                } else {
-                    throw NSError(domain: "Cannot get Dictionary from JSONString", code: 0)
-                }
-            } catch {
-                throw error
-            }
-        } else {
-            throw NSError(domain: "Cannot get data from JSONString", code: 0)
+        guard let jsonData = jsonString.data(using: .utf8) else {
+            throw JsonDecodingError.invalidData
         }
+        
+        guard let jsonObject = try JSONSerialization.jsonObject(with: jsonData) as? [String: String] else {
+            throw JsonDecodingError.decodingFailure
+        }
+        
+        return jsonObject
     }
 }

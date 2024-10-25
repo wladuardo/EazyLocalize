@@ -8,12 +8,12 @@
 import Foundation
 
 public protocol IChatGPTAPI {
-    func sendMessage(params: ChatGPTSendRequest) async -> Result<ChatGPTSendResponse, HTTPRequestError>
+    func sendMessage(params: ChatGPTSendRequest) async throws -> ChatGPTSendResponse
 }
 
 public final class ChatGPTAPI: HTTPClient, IChatGPTAPI {
-    public func sendMessage(params: ChatGPTSendRequest) async -> Result<ChatGPTSendResponse, HTTPRequestError> {
-        return await sendRequest(endpoint: ChatGPTEndpoint.sendMessage(params: params),
-                                 responseModel: ChatGPTSendResponse.self)
+    public func sendMessage(params: ChatGPTSendRequest) async throws -> ChatGPTSendResponse {
+        return try await sendRequest(endpoint: ChatGPTEndpoint.sendMessage(params: params),
+                                     responseModel: ChatGPTSendResponse.self).get()
     }
 }

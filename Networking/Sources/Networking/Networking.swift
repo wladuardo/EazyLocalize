@@ -9,7 +9,7 @@ public final class NetworkService {
 }
 
 extension NetworkService: INetworkService {
-    public func sendMessage(params: ChatGPTSendRequest) async -> Result<ChatGPTSendResponse, HTTPRequestError> {
-        return await chatGPTAPI.sendMessage(params: params)
+    public func sendMessage(params: ChatGPTSendRequest) async throws -> ChatGPTSendResponse {
+        return try await chatGPTAPI.sendMessage(params: params)
     }
 }
